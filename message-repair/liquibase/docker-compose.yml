@@ -1,0 +1,29 @@
+version: '3'
+services:
+#  oracle-psd2:
+#    build:
+#      context: .
+#      dockerfile: oracle.Dockerfile
+#    ports:
+#      - "1521:1521"
+  liquibase:
+    build:
+      context: .
+      dockerfile: liquibase.Dockerfile
+    environment:
+      - CONNECTION_STRING_OWNER=jdbc:oracle:thin:@database:1521/XE
+      - CHANGE_LOG_DDL_OWNER=/liquibase/changelog/master_changelog_owner.xml
+      - DB_OWNER_USERNAME=DB_OWNER
+      - DB_OWNER_PASSWORD=DB_OWNER
+      - CONNECTION_STRING_USER=offline:oracle?outputLiquibaseSql=true&changeLogFile=/liquibase/changelog/changelog/DatabaseChangeLog.csv
+      - CHANGE_LOG_DDL_USER=/liquibase/changelog/master_changelog_user.xml
+      - DB_USER_USERNAME=DB_PASSWORD
+      - DB_USER_PASSWORD=DB_PASSWORD
+      - DATA_TABLE_SPACE=TS_DATA
+      - INDEX_TABLE_SPACE=TS_INDEX
+      - DB_OWNER=DB_OWNER
+      - DB_USER=DB_USER
+      - CONTEXTS=Anagrafiche_BIC_DIRECTORY_PLUS,Anagrafiche_COUNTRY,Anagrafiche_CURRENCY,CommonMonitor_J0TDOMAIN,DriverCommon_J0TCURRENT_REVISION,CommonMonitor_J0TGROU_EVID,CommonMonitor_J0TGROU_EVID_REL,DriverCommon_J0TMQDUMPER,CommonMonitor_J0TORGANIZATION,DriverCommon_J0TPARTICIPANT_NEW,CommonMonitor_J0TREQUEST_TYPE,DriverCommon_J0TRESOURCES_ZIP,CommonAdmin_J0TTEMPLATE,CommonMonitor_J0TTOPIC,CommonMonitor_J0TTSINP,CommonMonitor_J0TTSINS,CommonMonitor_J0TTSISR,CommonMonitor_J0TTSOUS,CommonMonitor_J0TTSOUT,CommonMonitor_J0TTSRTS,CommonMonitor_J0TTSSTA,CommonMonitor_J0TTTRSZ,DriverCommon_J0TWEB_REPORT,DriverCommon_J1TWORKING_PROCESS,DriverCommon_JETNETWORK_MESSAGE_SUSP,user_profiler_ROLE,DriverCommon_YWTWIBAP,dev
+    entrypoint: ["/liquibase/wait-for-it.sh","database:8080","--timeout=0","--strict", "--", "/liquibase/liquibase-entrypoint.sh" ]
+    depends_on:
+      - database

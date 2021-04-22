@@ -22,6 +22,12 @@ services:
       - ORACLE_DISABLE_ASYNCH_IO=true
     ports:
       - 1521:1521
+    # https://docs.docker.com/engine/reference/builder#healthcheck
+    healthcheck:
+      test: ["CMD", "/healthcheck/check_database_is_ready.sh", "/healthcheck/liquibase_do_your_dirty_work_now"]
+      interval: 10s
+      timeout: 10s
+      retries: 18
   liquibase:
     build:
       context: .
@@ -78,6 +84,9 @@ services:
       - 8081:8080
     volumes:
       - ./target/engine/deployments:/opt/eap/standalone/deployments/
+    depends_on:
+      database:
+        condition: service_healthy
   monitor:
     image: gitlab.int.master.lan:5005/netgat/fin/fin-unicredit-monitor
     build:
@@ -94,3 +103,6 @@ services:
       - 8788:8787
     volumes:
       - ./target/monitor/deployments:/opt/eap/standalone/deployments/
+    depends_on:
+      database:
+        condition: service_healthy

@@ -1,0 +1,54 @@
+version: '3.3'
+services:
+  dozzle:
+    container_name: dozzle
+    image: amir20/dozzle:latest
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    ports:
+      - 8888:8080
+  mq:
+    image: gitlab.int.master.lan:5005/netgat/fin/fin-unicredit-ibmmq:dev
+    ports:
+      - "1414:1414"
+    environment:
+      - "TZ=Europe/Rome"
+      - "MAXHEAP=2048"
+  database:
+    build:
+      context: .
+      dockerfile: ./database/Dockerfile
+    image: local/netgat/message-repair/message-repair-oracle
+    environment:
+      - ORACLE_DISABLE_ASYNCH_IO=true
+    ports:
+      - 1521:1521
+    depends_on:
+      - mq
+    healthcheck:
+      test: ["CMD", "/healthcheck/check_database_is_ready.sh", "/healthcheck/liquibase_do_your_dirty_work_now"]
+      interval: 10s
+      timeout: 10s
+      retries: 18
+  liquibase:
+    build:
+      context: .
+      dockerfile: ./liquibase/Dockerfile
+    image: local/netgat/message-repair/message-repair-liquibase
+    environment:
+      - CONNECTION_STRING_OWNER=jdbc:oracle:thin:@database:1521/XE
+      - CHANGE_LOG_DDL_OWNER=master_changelog_owner.xml
+      - DB_OWNER_USERNAME=DB_OWNER
+      - DB_OWNER_PASSWORD=DB_OWNER
+      - CONNECTION_STRING_USER=jdbc:oracle:thin:@database:1521/XE
+      - CHANGE_LOG_DDL_USER=master_changelog_user.xml
+      - DB_USER_USERNAME=DB_USER
+      - DB_USER_PASSWORD=DB_USER
+      - DATA_TABLE_SPACE=TS_DATA
+      - INDEX_TABLE_SPACE=TS_INDEX
+      - DB_OWNER=DB_OWNER
+      - DB_USER=DB_USER
+      - CONTEXTS=Anagrafiche_BIC_DIRECTORY,Anagrafiche_COUNTRY,Anagrafiche_CURRENCY,DriverCommon_DUPLICATION_CHECK,CommonMonitor_J0TDOMAIN,DriverCommon_J0TCURRENT_REVISION,CommonMonitor_J0TGROU_EVID,CommonMonitor_J0TGROU_EVID_REL_WITH_TOPICS,DriverCommon_J0TMQDUMPER,CommonMonitor_J0TORGANIZATION,DriverCommon_J0TPARTICIPANT_NEW,CommonMonitor_J0TREQUEST_TYPE,DriverCommon_J0TRESOURCES_ZIP,CommonAdmin_J0TTEMPLATE,CommonMonitor_J0TTOPIC,CommonMonitor_J0TTSINP,CommonMonitor_J0TTSINS,CommonMonitor_J0TTSISR,CommonMonitor_J0TTSOUS,CommonMonitor_J0TTSOUT,CommonMonitor_J0TTSRTS,CommonMonitor_J0TTSSTA,CommonMonitor_J0TTTRSZ,DriverCommon_J0TWEB_REPORT,DriverCommon_J1TWORKING_PROCESS,DriverCommon_JETNETWORK_MESSAGE_SUSP,user_profiler_ROLE,DriverCommon_YWTWIBAP
+    depends_on:
+      database:
+        condition: service_healthy
