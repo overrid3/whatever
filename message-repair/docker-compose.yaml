@@ -15,10 +15,11 @@ services:
       - "TZ=Europe/Rome"
       - "MAXHEAP=2048"
   database:
+    container_name: oracle-unicredit
     build:
       context: .
       dockerfile: ./database/Dockerfile
-    image: local/netgat/message-repair/message-repair-oracle
+    image: local/netgat/message-repair/oracle-unicredit
     environment:
       - ORACLE_DISABLE_ASYNCH_IO=true
     ports:
@@ -31,10 +32,11 @@ services:
       timeout: 10s
       retries: 18
   liquibase:
+    container_name: liquibase-unicredit
     build:
       context: .
       dockerfile: ./liquibase/Dockerfile
-    image: local/netgat/message-repair/message-repair-liquibase
+    image: local/netgat/message-repair/liquibase-unicredit
     environment:
       - CONNECTION_STRING_OWNER=jdbc:oracle:thin:@database:1521/XE
       - CHANGE_LOG_DDL_OWNER=master_changelog_owner.xml
@@ -53,6 +55,7 @@ services:
       database:
         condition: service_healthy
   appServer:
+    container_name: jboss-unicredit
     build:
       context: .
       dockerfile: ./delivery/Dockerfile
