@@ -52,3 +52,18 @@ services:
     depends_on:
       database:
         condition: service_healthy
+  appServer:
+    build:
+      context: .
+      dockerfile: ./delivery/Dockerfile
+    image: gitlab.int.master.lan:5005/netgat/message-repair/jboss-unicredit
+    ports:
+      - 9990:9990
+      - 8787:8787
+      - 8081:8080
+    env_file:
+      - jboss.env
+#    depends_on:
+#      database:
+#        condition: service_healthy
+
