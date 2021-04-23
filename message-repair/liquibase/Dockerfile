@@ -6,7 +6,8 @@ RUN apt-get update && apt-get install -y netcat
 USER liquibase
 
 ADD ./resources/ojdbc.jar /liquibase/lib/
-ADD ./target/liquibase /liquibase/changelog
+
+ADD ./delivery/liquibase /liquibase/changelog
 
 ADD ./liquibase/liquibase-entrypoint.sh /liquibase
 ADD ./liquibase/driver.properties /liquibase

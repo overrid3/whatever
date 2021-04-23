@@ -3,6 +3,7 @@ node_modules
 wiremock/wiremock-standalone-2.25.1.jar
 
 target/
+delivery/
 
 .idea
 *.iml
