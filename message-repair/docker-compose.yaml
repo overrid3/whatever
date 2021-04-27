@@ -59,8 +59,8 @@ services:
   appServer:
     container_name: jboss-unicredit
     build:
-      context: .
-      dockerfile: ./delivery/Dockerfile
+      context: ./delivery
+      dockerfile: Dockerfile
     image: gitlab.int.master.lan:5005/netgat/message-repair/jboss-unicredit
     ports:
       - 9990:9990
