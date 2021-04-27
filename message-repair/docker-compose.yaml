@@ -10,12 +10,18 @@ services:
       - 8888:8080
   mq:
     container_name: mq
-    image: gitlab.int.master.lan:5005/netgat/fin/fin-unicredit-ibmmq:dev
+    image: dkr-registry.tasgroup.it:5000/supportwas/mqseries
+    volumes:
+      - ./delivery/mq:/etc/mqm
     ports:
       - "1414:1414"
     environment:
-      - "TZ=Europe/Rome"
-      - "MAXHEAP=2048"
+      #MQ_QMGR_NAME: SVI_NGFIN_UNICREDIT
+      TZ: Europe/Rome
+      MAXHEAP: "2048"
+      #MQ_ADMIN_PASSWORD: mqpassword
+      #MQ_APP_PASSWORD: mqpassword
+
   database:
     container_name: oracle-unicredit
     build:
