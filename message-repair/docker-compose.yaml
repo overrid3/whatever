@@ -68,6 +68,10 @@ services:
       - 8081:8080
     env_file:
       - jboss.env
+    volumes:
+      - ./delivery/deployments/:/opt/eap/standalone/deployments/
+
+
 #    depends_on:
 #      database:
 #        condition: service_healthy
