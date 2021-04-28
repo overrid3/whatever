@@ -12,7 +12,7 @@ services:
     container_name: mq
     image: dkr-registry.tasgroup.it:5000/supportwas/mqseries
     volumes:
-      - ./delivery/mq/MQ_QDef_JD.txt:/etc/mqm/MQ_QDef_JD.txt
+      - ./delivery/mq/MQ_QDef_JD.txt:/etc/mqm/config.mqsc
     ports:
       - "1414:1414"
     environment:
