@@ -1,0 +1,16 @@
+version: '0'
+services:
+  appServer:
+    container_name: wildfly-unipol
+    build:
+      context: ./delivery
+      dockerfile: Dockerfile
+    image: jboss/wildfly:14.0.1.Final
+    ports:
+      - 9990:9990
+      - 8787:8787
+      - 8081:8080
+    env_file:
+      - jboss.env
+    volumes:
+      - ./delivery/deployments/:/opt/jboss/wildfly/standalone/deployments/
