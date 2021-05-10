@@ -1,0 +1,17 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.6.xsd">
+    
+    <!-- installo prima i componenti -->
+    <include file="CommonAdmin/changelog.xml" relativeToChangelogFile="false"/>
+    <include file="user_profiler/changelog.xml" relativeToChangelogFile="false"/>
+    <include file="CommonMonitor/changelog.xml" relativeToChangelogFile="false"/>
+    <include file="CommonApplicationAdapter/changelog.xml" relativeToChangelogFile="false"/>
+    <include file="UnbulkDriver/changelog.xml" relativeToChangelogFile="false"/>
+    <include file="DriverCommon/changelog.xml" relativeToChangelogFile="false"/>
+    <include file="swf_report/changelog.xml" relativeToChangelogFile="false"/>
+    <include file="FileRepository/changelog.xml" relativeToChangelogFile="false"/>
+    <include file="Anagrafiche/changelog.xml" relativeToChangelogFile="false"/>
+
+    <!-- grants -->
+    <include file="solution/changelog_grant_schema.xml" relativeToChangelogFile="false"/>
+</databaseChangeLog>
