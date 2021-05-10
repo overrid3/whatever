@@ -1,5 +1,10 @@
 version: '3.3'
 services:
+  mq:
+    container_name: mq-unipol
+    image: dkr-registry.tasgroup.it/supportwas/activemq5:5.15.14
+    ports:
+      - 8161:8162
 
   database:
     container_name: postgres-unipol
