@@ -1,16 +1,36 @@
-version: '0'
+version: '3.3'
 services:
-  appServer:
-    container_name: wildfly-unipol
+
+  database:
+    container_name: postgres-unipol
     build:
-      context: ./delivery
-      dockerfile: Dockerfile
-    image: jboss/wildfly:14.0.1.Final
+      context: .
+      dockerfile: ./database/Dockerfile
+    image: local/netgat/anagrafiche/postgres-unipol
+    environment:
+      - POSTGRES_USER=docker
+      - POSTGRES_PASSWORD=docker
+      - POSTGRES_DB=docker
     ports:
-      - 9990:9990
-      - 8787:8787
-      - 8081:8080
-    env_file:
-      - jboss.env
-    volumes:
-      - ./delivery/deployments/:/opt/jboss/wildfly/standalone/deployments/
+      - 1521:1521
+#    depends_on:
+#      - mq
+#    healthcheck:
+#      test: [ "CMD", "/healthcheck/check_database_is_ready.sh", "/healthcheck/liquibase_do_your_dirty_work_now" ]
+#      interval: 10s
+#      timeout: 10s
+#      retries: 18
+#  appServer:
+#    container_name: wildfly-unipol
+#    build:
+#      context: ./delivery
+#      dockerfile: Dockerfile
+#    image: jboss/wildfly:14.0.1.Final
+#    ports:
+#      - 9990:9990
+#      - 8787:8787
+#      - 8081:8080
+#    env_file:
+#      - jboss.env
+#    volumes:
+#      - ./delivery/deployments/:/opt/jboss/wildfly/standalone/deployments/
