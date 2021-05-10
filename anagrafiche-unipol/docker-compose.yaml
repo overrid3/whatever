@@ -11,8 +11,11 @@ services:
       - POSTGRES_USER=docker
       - POSTGRES_PASSWORD=docker
       - POSTGRES_DB=docker
+      - PGDATA=/var/lib/postgresql/data/pgdata
     ports:
-      - 1521:1521
+      - 1521:5432
+
+
 #    depends_on:
 #      - mq
 #    healthcheck:
@@ -34,3 +37,4 @@ services:
 #      - jboss.env
 #    volumes:
 #      - ./delivery/deployments/:/opt/jboss/wildfly/standalone/deployments/
+
