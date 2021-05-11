@@ -13,9 +13,7 @@ services:
       dockerfile: ./database/Dockerfile
     image: local/netgat/anagrafiche/postgres-unipol
     environment:
-      - POSTGRES_USER=docker
       - POSTGRES_PASSWORD=docker
-      - POSTGRES_DB=docker
       - PGDATA=/var/lib/postgresql/data/pgdata
     ports:
       - 1521:5432
