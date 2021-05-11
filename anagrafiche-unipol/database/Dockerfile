@@ -1,11 +1,5 @@
 FROM postgres:12
 
-
-USER postgres
-RUN mkdir -p /var/lib/postgresql/TS_INDEX
-RUN mkdir -p /var/lib/postgresql/TS_DATA
-RUN chmod -R 777 /var/lib/postgresql/TS_INDEX
-RUN chmod -R 777 /var/lib/postgresql/TS_DATA
 ADD ./database/init.sql /docker-entrypoint-initdb.d/
 # to make liquibase starts when the database is ready
 #ADD ./database/check_database_is_ready.sh /healthcheck/check_database_is_ready.sh
@@ -13,3 +7,9 @@ ADD ./database/init.sql /docker-entrypoint-initdb.d/
 #
 #ADD ./database/warn_liquibase_to_start.sh /docker-entrypoint-initdb.d/
 #RUN chmod 0755 /docker-entrypoint-initdb.d/warn_liquibase_to_start.sh
+
+USER postgres
+RUN mkdir -p /var/lib/postgresql/TS_INDEX
+RUN mkdir -p /var/lib/postgresql/TS_DATA
+RUN chmod -R 777 /var/lib/postgresql/TS_INDEX
+RUN chmod -R 777 /var/lib/postgresql/TS_DATA

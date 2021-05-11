@@ -5,17 +5,16 @@ USER root
 RUN apt-get update && apt-get install -y netcat
 USER liquibase
 
-#ADD ./resources/ojdbc.jar /liquibase/lib/
-#
-#ADD ./delivery/liquibase /liquibase/changelog
-#
-#ADD ./liquibase/liquibase-entrypoint.sh /liquibase
-#
-#ADD ./liquibase/driver.properties /liquibase
-#
-#USER root
-#RUN chmod -R 777 /liquibase
-#USER liquibase
-#
-#ENTRYPOINT ["/bin/bash", "/liquibase/liquibase-entrypoint.sh"]
+ADD ./liquibase/tasgroupDBDriver.jar /liquibase/lib/
+
+ADD ./delivery/liquibase/ /liquibase/changelog/
+
+ADD ./liquibase/postgres-run.sh /liquibase
+ADD ./liquibase/env.properties /liquibase
+
+USER root
+RUN chmod -R 777 /liquibase
+USER liquibase
+
+ENTRYPOINT ["/bin/bash", "/liquibase/postgres-run.sh"]
 

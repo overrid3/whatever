@@ -25,20 +25,20 @@ USAGE
 LOCAL_DIRECTORY="$( dirname "${BASH_SOURCE[0]}" )"
 #load properties from env.properties
 # shellcheck disable=SC1090
-#. $LOCAL_DIRECTORY/env.properties
+. $LOCAL_DIRECTORY/env.properties
 
-echo "$ENTRYPOINT_cname CLASSPATH = /liquibase/lib/postgresql-42.2.20.jar";
-echo "$ENTRYPOINT_cname CONTEXTS=Anagrafiche_BIC_DIRECTORY_PLUS,Anagrafiche_COUNTRY,Anagrafiche_CURRENCY,CommonMonitor_J0TDOMAIN,DriverCommon_J0TCURRENT_REVISION,CommonMonitor_J0TGROU_EVID,CommonMonitor_J0TGROU_EVID_REL,DriverCommon_J0TMQDUMPER,CommonMonitor_J0TORGANIZATION,DriverCommon_J0TPARTICIPANT_NEW,CommonMonitor_J0TREQUEST_TYPE,DriverCommon_J0TRESOURCES_ZIP,CommonAdmin_J0TTEMPLATE,CommonMonitor_J0TTOPIC,CommonMonitor_J0TTSINP,CommonMonitor_J0TTSINS,CommonMonitor_J0TTSISR,CommonMonitor_J0TTSOUS,CommonMonitor_J0TTSOUT,CommonMonitor_J0TTSRTS,CommonMonitor_J0TTSSTA,CommonMonitor_J0TTTRSZ,DriverCommon_J0TWEB_REPORT,DriverCommon_J1TWORKING_PROCESS,DriverCommon_JETNETWORK_MESSAGE_SUSP,user_profiler_ROLE,DriverCommon_YWTWIBAP,dev";
+echo "$ENTRYPOINT_cname CLASSPATH = $CLASSPATH";
+echo "$ENTRYPOINT_cname CONTEXTS = $CONTEXTS";
 
 #input properties
-echo "$ENTRYPOINT_cname CONNECTION_STRING_OWNER = jdbc:postgresql://local/netgat/anagrafiche/postgres-unipol:5432";
-echo "$ENTRYPOINT_cname CHANGE_LOG_DDL_OWNER = /liquibase/changelog/master_changelog_owner.xml";
-echo "$ENTRYPOINT_cname DB_OWNER_USERNAME = docker";
-echo "$ENTRYPOINT_cname DB_OWNER_PASSWORD = docker";
-echo "$ENTRYPOINT_cname DATA_TABLE_SPACE = TS_DATA";
-echo "$ENTRYPOINT_cname INDEX_TABLE_SPACE = TS_INDEX";
-echo "$ENTRYPOINT_cname DB_OWNER = docker";
-echo "$ENTRYPOINT_cname DB_USER = docker";
+echo "$ENTRYPOINT_cname CONNECTION_STRING_OWNER = $CONNECTION_STRING_OWNER";
+echo "$ENTRYPOINT_cname CHANGE_LOG_DDL_OWNER = $CHANGE_LOG_DDL_OWNER";
+echo "$ENTRYPOINT_cname DB_OWNER_USERNAME = $DB_OWNER_USERNAME";
+echo "$ENTRYPOINT_cname DB_OWNER_PASSWORD = $DB_OWNER_PASSWORD";
+echo "$ENTRYPOINT_cname DATA_TABLE_SPACE = $DATA_TABLE_SPACE";
+echo "$ENTRYPOINT_cname INDEX_TABLE_SPACE = $INDEX_TABLE_SPACE";
+echo "$ENTRYPOINT_cname DB_OWNER = $DB_OWNER";
+echo "$ENTRYPOINT_cname DB_USER = $DB_USER";
 
 if [ -z "${CONNECTION_STRING_OWNER}" ]; then
     usage "CONNECTION_STRING_OWNER"
