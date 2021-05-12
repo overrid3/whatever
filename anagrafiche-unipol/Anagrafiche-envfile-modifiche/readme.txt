@@ -1,1 +1,0 @@
-i files xml vanno in liquibase/anagrafiche, l'env file va in liquibase
