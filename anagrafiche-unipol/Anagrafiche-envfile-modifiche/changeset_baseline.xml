@@ -1,0 +1,603 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.6.xsd">
+
+	<changeSet id="create-1" author="pinnag" context="Anagrafiche_BANK_DIRECTORY_PLUS">
+        <createTable tablespace="${tablesTablespaceName}" remarks="SWIFT Bank Directory Plus" tableName="BANK_DIRECTORY_PLUS">
+            <column name="ID" type="number">
+                <constraints primaryKey="true" primaryKeyName="BANKPLUS_PRIM"/>
+            </column>
+            <column name="MOD_FLAG" remarks="A = Addition / M = Modification / D = Deletion" type="varchar(1 BYTE)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="RECORD_KEY" remarks="The unique key of the record in the file." type="varchar(12 BYTE)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="OFFICE_TYPE" remarks="Indicates the status of the entity in the entities hierarchy. HO - Head Office / DB - Domestic Branch or department / SB - Sub Domestic Branch / FB - Foreign Branch / SF - Sub Foreign Branch / UC - Unclassified" type="varchar(2 BYTE)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="PARENT_OFFICE_KEY" remarks="Indicates the RECORD KEY of the closest entity upwards in the entities hierarchy" type="varchar(12 BYTE)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="HEAD_OFFICE_KEY" remarks="Indicates the RECORD KEY of the &quot;HO - Head Office&quot; in the entities hierarchy" type="varchar(12 BYTE)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="LEGAL_TYPE" remarks="Indicates the status of the entity in the legal hierarchy. L - Legal Entity / B - Business Entity / U - Unknown" type="varchar(1 BYTE)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="LEGAL_PARENT_KEY" remarks="Indicates the RECORD KEY of the &quot;L - Legal Entity&quot; in the legal hierarchy" type="varchar(12 BYTE)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="GROUP_TYPE" remarks="The type of entity that identifies the group." type="varchar(6 BYTE)"/>
+            <column name="GROUP_PARENT_KEY" remarks="The record key of the parent entity. This value identifies the set of entities (records) belonging to the group" type="varchar(12 BYTE)"/>
+            <column name="INSTITUTION_STATUS" remarks="Indicates the licence status of the institution" type="varchar(4 BYTE)"/>
+            <column name="COOP_GROUP_KEY" remarks="This field indicates the Record_Key of the cooperative central bank for a cooperative bank group" type="varchar(12 BYTE)"/>
+            <column name="ISO_LEI_CODE" remarks="ISO 17442 defines this Legal Entity Identifier" type="varchar(20 BYTE)"/>
+            <column name="BIC8" remarks="BIC (party prefix, country, and party suffix)" type="varchar(8 BYTE)"/>
+            <column name="BRANCH_BIC" remarks="The BIC branch identifier associated with the 8-character BIC" type="varchar(3 BYTE)"/>
+            <column name="BIC" remarks="The unique BIC related to the institution from the BIC Directory" type="varchar(11 BYTE)"/>
+            <column name="CHIPS_UID" remarks="The CHIPS Universal ID related to the institution" type="varchar(6 BYTE)"/>
+            <column name="NATIONAL_ID" remarks="The National identifier of the institution/branch" type="varchar(15 BYTE)"/>
+            <column name="CONNECTED_BIC" remarks="The connected BIC of the same institution, if available, or of its correspondent through which it connects" type="varchar(11 BYTE)"/>
+            <column name="INSTITUTION_NAME" remarks="Institution trading name" type="varchar(105 BYTE)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="BRANCH_INFO" remarks="Branch information is derived from the BIC Directory" type="varchar(70 BYTE)"/>
+            <column name="POB_NUMBER" remarks="Comma-separated field with the POB number of the institution/branch and the related ZIP code" type="varchar(35 BYTE)"/>
+            <column name="STREET_ADDRESS_1" remarks="Street name" type="varchar(35 BYTE)"/>
+            <column name="STREET_ADDRESS_2" remarks="Street number" type="varchar(35 BYTE)"/>
+            <column name="STREET_ADDRESS_3" remarks="Building, building name, floor" type="varchar(35 BYTE)"/>
+            <column name="STREET_ADDRESS_4" remarks="Area" type="varchar(35 BYTE)"/>
+            <column name="CITY" remarks="City name of the institution/branch" type="varchar(35 BYTE)"/>
+            <column name="CPS" remarks="County, province, state, or other administrative region of the owner institution/branc" type="varchar(90 BYTE)"/>
+            <column name="ZIP_CODE" remarks="Zip code of the institution/branch" type="varchar(15 BYTE)"/>
+            <column name="COUNTRY_NAME" remarks="The country name of the institution/branch as indicated in the ISO 3166" type="varchar(70 BYTE)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="ISO_COUNTRY_CODE" remarks="The ISO 3166-1 alpha-2 code of the country of the institution/branch" type="varchar(2 BYTE)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="TIMEZONE" remarks="This field will contain the business party suffix information" type="varchar(1 BYTE)"/>
+            <column name="SUBTYPE_IND" remarks="The business type of the entity. Subtype indicator is provided only for records with a BIC." type="varchar(4 BYTE)"/>
+            <column name="NET_CONNECTIVITY" remarks="Status of an entitys connection to SWIFT" type="varchar(3 BYTE)"/>
+            <column name="BRANCH_QUALIFIERS" remarks="The operational type of the entity." type="varchar(35 BYTE)"/>
+            <column name="SERVICE_CODES" remarks="SWIFT FIN service codes" type="varchar(60 BYTE)"/>
+            <column name="SSI_GROUP_KEY" remarks="Indicates which SSI Group the entity belongs to in the SSI Plus files" type="varchar(12 BYTE)"/>
+            <column name="IBAN_KEY" remarks="Identifies the RECORD KEY in the IBANPLUS txt file that contains the IBAN data for this entity." type="varchar(12 BYTE)"/>
+            <column name="FIELD_A" remarks="Contains the future valid-from date of the whole record due to a change to its attributes" type="varchar(35 BYTE)"/>
+            <column name="FIELD_B" remarks="National ID Type - National ID Type + /AN - National ID Type + /FN" type="varchar(70 BYTE)"/>
+            <column name="REVISION" remarks="Revision" type="varchar(100 BYTE)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0" name="VERSION" type="number">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0" name="PROPAGATE" type="number(1, 0)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0" name="DELETED" type="number(1, 0)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueComputed="CURRENT_TIMESTAMP" name="CREATED_TMST" remarks="Row creation Timestamp" type="timestamp(6)"/>
+            <column defaultValueComputed="CURRENT_TIMESTAMP" name="UPDATED_TMST" remarks="Row edit Timestamp" type="timestamp(6)"/>
+            <column name="REVISION_TMST" remarks="Revision creation Timestamp" type="timestamp(6)"/>
+            <column defaultValueNumeric="1" name="ACTIVE_VERSION" remarks="Indicates if the record is an active version" type="number(1, 0)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+	<changeSet id="create-2" author="pinnag" context="Anagrafiche_BIC_DIRECTORY">
+        <createTable tablespace="${tablesTablespaceName}" remarks="SWIFT Bic Directory" tableName="BIC_DIRECTORY">
+            <column name="ID" type="number">
+                <constraints primaryKey="true" primaryKeyName="BIC_PRIM"/>
+            </column>
+            <column name="BIC_BANK" remarks="BIC Bank Code" type="varchar(4 BYTE)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="BIC_COUN" remarks="BIC Country Code" type="varchar(2 BYTE)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="BIC_LOCA" remarks="BIC Location Code" type="varchar(2 BYTE)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="BIC_BRAN" remarks="BIC Branch Code" type="varchar(3 BYTE)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="INST_NAME" remarks="Institution Name" type="varchar(105 BYTE)"/>
+            <column name="BRAN_INFO" remarks="Branch Information" type="varchar(70 BYTE)"/>
+            <column name="CITY_NAME" remarks="City Name" type="varchar(35 BYTE)"/>
+            <column name="INST_SUB_TYPE" remarks="Institution Sub Type" type="varchar(4 BYTE)"/>
+            <column name="INST_ADD_SERV" remarks="Added Value Services" type="varchar(60 BYTE)"/>
+            <column name="INST_EXTRA_INFO" remarks="Extra Information" type="varchar(35 BYTE)"/>
+            <column name="INST_PHYS_ADDR" remarks="Institute Physical Address" type="varchar(140 BYTE)"/>
+            <column name="INST_LOCA" remarks="Institute Location Address" type="varchar(105 BYTE)"/>
+            <column name="INST_COUN_NAME" remarks="Institute Country Name" type="varchar(70 BYTE)"/>
+            <column name="INST_POB_NUMB" remarks="Institute Post Office Box" type="varchar(35 BYTE)"/>
+            <column name="INST_POB_LOCA" remarks="Institute POB Location" type="varchar(105 BYTE)"/>
+            <column name="INST_POB_COUN" remarks="Institute POB Country" type="varchar(70 BYTE)"/>
+            <column name="USER_UPDT" remarks="Update User" type="varchar(100 BYTE)"/>
+            <column name="REVISION" remarks="Revision" type="varchar(100 BYTE)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0" name="VERSION" type="number">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0" name="PROPAGATE" type="number(1, 0)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0" name="DELETED" type="number(1, 0)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueComputed="CURRENT_TIMESTAMP" name="CREATED_TMST" remarks="Row create Timestamp" type="timestamp(6)"/>
+            <column defaultValueComputed="CURRENT_TIMESTAMP" name="UPDATED_TMST" remarks="Row update Timestamp" type="timestamp(6)"/>
+            <column name="REVISION_TMST" remarks="Revision create Timestamp" type="timestamp(6)"/>
+            <column defaultValueNumeric="1" name="ACTIVE_VERSION" remarks="Indicates if the record is an active version" type="number(1, 0)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+	<changeSet id="create-3" author="pinnag" context="Anagrafiche_BIC_DIRECTORY_PLUS">
+        <createTable tablespace="${tablesTablespaceName}" remarks="SWIFT Bic Directory Plus" tableName="BIC_DIRECTORY_PLUS">
+            <column name="ID" type="number">
+                <constraints primaryKey="true" primaryKeyName="BICPLUS_PRIM"/>
+            </column>
+            <column name="MOD_FLAG" remarks="A = Addition / M = Modification / D = Deletion" type="varchar(1 BYTE)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="CHANGED_FIELD" type="varchar(186 BYTE)"/>
+            <column name="RECORD_KEY" remarks="Unique key per revision" type="varchar(12 BYTE)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="PREV_RECORD__KEY" type="varchar(12 BYTE)"/>
+            <column name="NEXT_RECORD__KEY" type="varchar(12 BYTE)"/>
+            <column name="EVENT_TYPE" type="varchar(32 BYTE)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="EVENT_DATE" type="varchar(8 BYTE)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="BIC8" type="varchar(8 BYTE)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="BRANCH_BIC" type="varchar(8 BYTE)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="BIC" type="varchar(11 BYTE)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="RECORD_STATUS" remarks="C current last event in the chain excluding future / H hystorical event in event chain / F future event that will occour after pubblication" type="varchar(1 BYTE)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="OP_ACTIVE_REC" remarks="Y/N Operationally active" type="varchar(1 BYTE)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="SUB_INDICATOR" type="varchar(4 BYTE)"/>
+            <column name="SWIFT_FIN" remarks="Y/N connected FIN" type="varchar(1 BYTE)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="SWIFT_FA" remarks="Y/N connected FileAct" type="varchar(1 BYTE)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="SWIFT_IA" remarks="Y/N connected InterAct" type="varchar(1 BYTE)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="LEGAL_NAME" type="varchar(105)"/>
+            <column name="INSTITUTION_NAME" type="varchar(105 BYTE)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="INSTITUTION_TYPE" remarks="FINANCIAL / NOT FINANCIAL" type="varchar(12 BYTE)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="ENTITY_TYPE" type="varchar(16 BYTE)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="RE_STREET_01" remarks="[Branch] Street name" type="varchar(35)"/>
+            <column name="RE_STREET_02" remarks="[Branch] Street number" type="varchar(35)"/>
+            <column name="RE_STREET_03" remarks="[Branch] Building name, floor" type="varchar(35)"/>
+            <column name="RE_STREET_04" remarks="[Branch] Area" type="varchar(35)"/>
+            <column name="RE_CITY" type="varchar(35)"/>
+            <column name="RE_CPS" remarks="[Branch] Country, province, state" type="varchar(90)"/>
+            <column name="RE_ZIP_CODE" type="varchar(15)"/>
+            <column name="RE_POB_NR" type="varchar(35)"/>
+            <column name="OP_STREET_01" type="varchar(35 BYTE)"/>
+            <column name="OP_STREET_02" type="varchar(35 BYTE)"/>
+            <column name="OP_STREET_03" type="varchar(35 BYTE)"/>
+            <column name="OP_STREET_04" type="varchar(35 BYTE)"/>
+            <column name="OP_CITY" type="varchar(35 BYTE)"/>
+            <column name="OP_CPS" type="varchar(90 BYTE)"/>
+            <column name="OP_ZIP_CODE" type="varchar(15 BYTE)"/>
+            <column name="OP_POB_NR" type="varchar(35 BYTE)"/>
+            <column name="BR_STREET_01" type="varchar(35 BYTE)"/>
+            <column name="BR_STREET_02" type="varchar(35 BYTE)"/>
+            <column name="BR_STREET_03" type="varchar(35 BYTE)"/>
+            <column name="BR_STREET_04" type="varchar(35 BYTE)"/>
+            <column name="BR_CITY" type="varchar(35 BYTE)"/>
+            <column name="BR_CPS" type="varchar(90 BYTE)"/>
+            <column name="BR_ZIP_CODE" type="varchar(15 BYTE)"/>
+            <column name="BR_POB_NR" type="varchar(35 BYTE)"/>
+            <column name="BRANCH_INFO" type="varchar(70 BYTE)"/>
+            <column name="COUNTRY_NAME" type="varchar(70 BYTE)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="ISO_COUNTRY_CODE" type="varchar(2 BYTE)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="LOCATION_CODE" type="varchar(1 BYTE)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="FIN_SERV_CODE" type="varchar(60 BYTE)"/>
+            <column name="RECORD_KEY_BDP" type="varchar(12 BYTE)"/>
+            <column name="FIELD_A" type="varchar(1 BYTE)"/>
+            <column name="FIELD_B" type="varchar(64 BYTE)"/>
+            <column name="FIELD_C" type="varchar(128 BYTE)"/>
+            <column name="FIELD_D" type="varchar(256 BYTE)"/>
+            <column name="FIELD_E" type="varchar(11 BYTE)"/>
+            <column name="FIELD_F" type="varchar(12 BYTE)"/>
+            <column name="REVISION" type="varchar(100 BYTE)"/>
+            <column defaultValueNumeric="0" name="VERSION" type="number">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueComputed="0" name="PROPAGATE" type="char(1 BYTE)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueComputed="0" name="DELETED" type="char(1 BYTE)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueComputed="CURRENT_TIMESTAMP" name="CREATED_TMST" type="timestamp(6)"/>
+            <column defaultValueComputed="CURRENT_TIMESTAMP" name="UPDATED_TMST" type="timestamp(6)"/>
+            <column name="REVISION_TMST" type="timestamp(6)"/>
+            <column defaultValueNumeric="1" name="ACTIVE_VERSION" remarks="Indicates if the record is an active version" type="number(1, 0)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+	<changeSet id="create-4" author="pinnag" context="Anagrafiche_COUNTRY">
+        <createTable tablespace="${tablesTablespaceName}" remarks="SWIFT Country Code" tableName="COUNTRY">
+            <column name="ID" type="number">
+                <constraints primaryKey="true" primaryKeyName="COUNTRY_PRIM"/>
+            </column>
+            <column name="REC_TYPE_FLAG" remarks="Type" type="char(1 BYTE)"/>
+            <column name="REC_STAT_FLAG" remarks="Status" type="char(1 BYTE)"/>
+            <column name="REC_VALI_DATE" remarks="Activation Date" type="date"/>
+            <column name="COUN_CODE" remarks="Country Code" type="varchar(2 BYTE)"/>
+            <column name="COUN_NAME" remarks="Country Name" type="varchar(70 BYTE)"/>
+            <column name="USER_UPDT" remarks="Update User" type="varchar(100 BYTE)"/>
+            <column name="TMST_UPDT" remarks="Update Timestamp" type="timestamp(6)"/>
+            <column name="REVISION" type="varchar(100 BYTE)"/>
+        </createTable>
+    </changeSet>
+	<changeSet id="create-5" author="pinnag" context="Anagrafiche_CURRENCY">
+        <createTable tablespace="${tablesTablespaceName}" remarks="SWIFT Currency Code" tableName="CURRENCY">
+            <column name="ID" type="number">
+                <constraints primaryKey="true" primaryKeyName="CURRENCY_PRIM"/>
+            </column>
+            <column name="REC_TYPE_FLAG" remarks="Type" type="char(1 BYTE)"/>
+            <column name="REC_STAT_FLAG" remarks="Status" type="char(1 BYTE)"/>
+            <column name="REC_VALI_DATE" remarks="Activation Date" type="date"/>
+            <column name="CURR_CODE" remarks="Currency Code" type="varchar(3 BYTE)"/>
+            <column defaultValue=" " name="COUN_CODE" remarks="Country Code" type="varchar(2 BYTE)"/>
+            <column name="CURR_NAME" remarks="Currency Name" type="varchar(70 BYTE)"/>
+            <column name="CURR_NUMB_DEC" remarks="Currency Fraction Digits" type="int"/>
+            <column name="COUN_NAME" remarks="Country Name" type="varchar(70 BYTE)"/>
+            <column name="USER_UPDT" remarks="Update User" type="varchar(100 BYTE)"/>
+            <column name="TMST_UPDT" remarks="Update Timestamp" type="timestamp(6)"/>
+            <column name="REVISION" type="varchar(100 BYTE)"/>
+        </createTable>
+    </changeSet>
+	<changeSet id="create-6" author="pinnag" context="Anagrafiche_GPI_DIRECTORY">
+        <createTable tablespace="${tablesTablespaceName}" tableName="GPI_DIRECTORY">
+            <column name="ID" type="number">
+                <constraints primaryKey="true" primaryKeyName="GPI_PRIM"/>
+            </column>
+            <column name="MOD_FLAG" type="varchar(1 BYTE)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="RECORD_KEY" type="varchar(12 BYTE)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="BDP_RECORD_KEY" type="varchar(12 BYTE)"/>
+            <column name="PLATFORM" type="varchar(8 BYTE)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="SERVICE_ID" type="varchar(3 BYTE)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="SERVICE_NAME" type="varchar(7 BYTE)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="PARTICIPANT_ID" type="varchar(50 BYTE)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="ATTRIBUTE_1" type="varchar(12 BYTE)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="ATTRIBUTE_2" type="varchar(105 BYTE)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="ATTRIBUTE_3" type="varchar(2 BYTE)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="ATTRIBUTE_4" type="varchar(3 BYTE)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="ATTRIBUTE_5" type="varchar(11 BYTE)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="ATTRIBUTE_6" type="varchar(3 BYTE)"/>
+            <column name="ATTRIBUTE_7" type="varchar(128 BYTE)"/>
+            <column name="ATTRIBUTE_8" type="varchar(1 BYTE)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="ATTRIBUTE_9" type="varchar(32 BYTE)"/>
+            <column name="ATTRIBUTE_10" type="varchar(12 BYTE)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="ATTRIBUTE_11" type="varchar(8 BYTE)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="ATTRIBUTE_12" type="varchar(8 BYTE)"/>
+            <column name="ATTRIBUTE_13" type="varchar(12 BYTE)"/>
+            <column name="ATTRIBUTE_14" type="varchar(8 BYTE)"/>
+            <column name="ATTRIBUTE_15" type="varchar(255 BYTE)"/>
+            <column name="ATTRIBUTE_16" type="varchar(255 BYTE)"/>
+            <column name="ATTRIBUTE_17" type="varchar(255 BYTE)"/>
+            <column name="ATTRIBUTE_18" type="varchar(255 BYTE)"/>
+            <column name="ATTRIBUTE_19" type="varchar(255 BYTE)"/>
+            <column name="ATTRIBUTE_20" type="varchar(255 BYTE)"/>
+            <column name="ACTIVATION_DATE" type="varchar(8 BYTE)"/>
+            <column name="FIELD_A" type="varchar(1 BYTE)"/>
+            <column name="FIELD_B" type="varchar(8 BYTE)"/>
+            <column name="FIELD_C" type="varchar(35 BYTE)"/>
+            <column name="REVISION" type="varchar(100 BYTE)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0" name="VERSION" type="number">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0" name="PROPAGATE" type="number(1, 0)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0" name="DELETED" type="number(1, 0)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueComputed="CURRENT_TIMESTAMP" name="CREATED_TMST" type="timestamp(6)"/>
+            <column defaultValueComputed="CURRENT_TIMESTAMP" name="UPDATED_TMST" type="timestamp(6)"/>
+            <column name="REVISION_TMST" type="timestamp(6)"/>
+            <column defaultValueNumeric="1" name="ACTIVE_VERSION" type="number(1, 0)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+	<changeSet id="create-7" author="pinnag" context="Anagrafiche_IBAN_DIRECTORY_PLUS">
+        <createTable tablespace="${tablesTablespaceName}" remarks="SWIFT Iban Directory Plus" tableName="IBAN_DIRECTORY_PLUS">
+            <column name="ID" type="number">
+                <constraints primaryKey="true" primaryKeyName="IBANPLUS_PRIM"/>
+            </column>
+            <column name="MOD_FLAG" remarks="A = Addition / M = Modification / D = Deletion" type="varchar(1 BYTE)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="RECORD_KEY" remarks="Unique key per revision" type="varchar(12 BYTE)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="INSTITUTION_NAME" remarks="Institution name of the IBAN issuer." type="varchar(105 BYTE)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="COUNTRY_NAME" remarks="The name of the country of residence of the financial institution that issued the IBAN." type="varchar(70 BYTE)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="ISO_COUNTRY_CODE" remarks="The code of the country of residence of the financial institution that issued the IBAN" type="varchar(2 BYTE)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="IBAN_ISO_COUNTRY_CODE" remarks="The ISO 3166-1 country code prefix of the IBANs that the institution issued." type="varchar(2 BYTE)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="IBAN_BIC" remarks="This is the BIC11 issued together with the IBANs to the institutions clients." type="varchar(11 BYTE)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="ROUTING_BIC" remarks="The ROUTING BIC is NOT related to SEPA (ISO 20022 XML) payments." type="varchar(11 BYTE)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="IBAN_NATIONAL_ID" remarks="The National ID as included in the IBAN." type="varchar(15 BYTE)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="SERVICE_CONTEXT" remarks="Code indicating the context of the payment services provided by the financial institution" type="varchar(8 BYTE)"/>
+            <column name="FIELD_A" remarks="It relates to a future change of the record." type="varchar(35 BYTE)"/>
+            <column name="FIELD_B" remarks="This field is reserved for future use. If values are populated, then the file structure and the field name will not change" type="varchar(70 BYTE)"/>
+            <column name="REVISION" remarks="Revision" type="varchar(100 BYTE)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0" name="VERSION" type="number">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0" name="PROPAGATE" type="number(1, 0)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0" name="DELETED" type="number(1, 0)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueComputed="CURRENT_TIMESTAMP" name="CREATED_TMST" remarks="Row creation Timestamp" type="timestamp(6)"/>
+            <column defaultValueComputed="CURRENT_TIMESTAMP" name="UPDATED_TMST" remarks="Row edit Timestamp" type="timestamp(6)"/>
+            <column name="REVISION_TMST" remarks="Revision creation Timestamp" type="timestamp(6)"/>
+            <column defaultValueNumeric="1" name="ACTIVE_VERSION" remarks="Indicates if the record is an active version" type="number(1, 0)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+	<changeSet id="create-8" author="pinnag" context="Anagrafiche_TIPS_DIRECTORY">
+        <createTable tablespace="${tablesTablespaceName}" remarks="TIPS Directory" tableName="TIPS_DIRECTORY">
+            <column name="ID" type="number">
+                <constraints primaryKey="true" primaryKeyName="TIPS_DIRECTORY_PK"/>
+            </column>
+            <column name="USER_BIC" remarks="BIC configured as Authorised Account User in TIPS" type="varchar(11 BYTE)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="INSTITUTION_NAME" remarks="It is the name stored in the CRDM BIC Directory together with the User BIC" type="varchar(105 BYTE)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="PARTY_BIC" remarks="BIC that identifies a TIPS Participant or a Reachable Party in TIPS" type="varchar(11 BYTE)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="ACCOUNT_OWNER_BIC" remarks="BIC of the TIPS Participant owning the TIPS Account for which the User BIC has been authorised, also through a CMB" type="varchar(11 BYTE)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="MOD_FLAG" remarks="Type of Change column on TIPS, possible values: A = Addition / M = Modification / D = Deletion / U = Unchanged" type="varchar(1 BYTE)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="VALID_FROM" remarks="Date from which the entry is valid" type="date">
+                <constraints nullable="false"/>
+            </column>
+            <column name="VALID_TO" remarks="Date up to which the entry is valid. Value &quot;99991231&quot; is used whenever the ending of validity" type="date">
+                <constraints nullable="false"/>
+            </column>
+            <column name="PARTICIPATION_TYPE" remarks="Exhaustive list of possible values for Party BIC: 01 – TIPS Participant 02 – Reachable Party" type="varchar(2 BYTE)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="REVISION" remarks="Revision" type="varchar(100 BYTE)"/>
+            <column defaultValueNumeric="0" name="VERSION" type="number">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueComputed="0" name="PROPAGATE" type="char(1 BYTE)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueComputed="0" name="DELETED" type="char(1 BYTE)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueComputed="CURRENT_TIMESTAMP" name="CREATED_TMST" remarks="Row creation Timestamp" type="timestamp(6)"/>
+            <column defaultValueComputed="CURRENT_TIMESTAMP" name="UPDATED_TMST" remarks="Row edit Timestamp" type="timestamp(6)"/>
+            <column name="REVISION_TMST" remarks="Revision creation Timestamp" type="timestamp(6)"/>
+            <column defaultValueNumeric="1" name="ACTIVE_VERSION" remarks="Indicates if the record is an active version" type="number(1, 0)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+	<changeSet id="create-9" author="pinnag" context="Anagrafiche_BANK_DIRECTORY_PLUS">
+        <createIndex tablespace="${indexesTablespaceName}" indexName="BANKPLUS_BIC_INDX" tableName="BANK_DIRECTORY_PLUS">
+            <column name="BIC"/>
+        </createIndex>
+    </changeSet>
+    <changeSet id="create-10" author="pinnag" context="Anagrafiche_BANK_DIRECTORY_PLUS">
+        <createIndex tablespace="${indexesTablespaceName}" indexName="BANKPLUS_INSNAME_INDX" tableName="BANK_DIRECTORY_PLUS">
+            <column name="INSTITUTION_NAME"/>
+        </createIndex>
+    </changeSet>
+    <changeSet id="create-11" author="pinnag" context="Anagrafiche_BANK_DIRECTORY_PLUS">
+        <createIndex tablespace="${indexesTablespaceName}" indexName="BANKPLUS_IPRIM" tableName="BANK_DIRECTORY_PLUS" unique="true">
+            <column name="RECORD_KEY"/>
+            <column name="REVISION"/>
+            <column defaultValueNumeric="0" name="VERSION"/>
+        </createIndex>
+    </changeSet>
+	<changeSet id="create-12" author="pinnag" context="Anagrafiche_BIC_DIRECTORY">
+        <createIndex tablespace="${indexesTablespaceName}" indexName="BIC_DIRECTORY_IPRIM" tableName="BIC_DIRECTORY" unique="true">
+            <column name="BIC_BANK"/>
+            <column name="BIC_COUN"/>
+            <column name="BIC_LOCA"/>
+            <column name="BIC_BRAN"/>
+            <column name="REVISION"/>
+            <column defaultValueNumeric="0" name="VERSION"/>
+        </createIndex>
+    </changeSet>
+	<changeSet id="create-13" author="pinnag" context="Anagrafiche_BIC_DIRECTORY_PLUS">
+        <createIndex tablespace="${indexesTablespaceName}" indexName="BICPLUS_IPRIM" tableName="BIC_DIRECTORY_PLUS" unique="true">
+            <column name="RECORD_KEY"/>
+            <column name="REVISION"/>
+            <column defaultValueNumeric="0" name="VERSION"/>
+        </createIndex>
+    </changeSet>
+	<changeSet id="create-14" author="pinnag" context="Anagrafiche_BIC_DIRECTORY_PLUS">
+        <createIndex tablespace="${indexesTablespaceName}" indexName="BICPLUS_BIC_INDX" tableName="BIC_DIRECTORY_PLUS">
+            <column name="BIC"/>
+        </createIndex>
+    </changeSet>
+	<changeSet id="create-15" author="pinnag" context="Anagrafiche_BIC_DIRECTORY_PLUS">
+        <createIndex tablespace="${indexesTablespaceName}" indexName="BICPLUS_INSNAME_INDX" tableName="BIC_DIRECTORY_PLUS">
+            <column name="INSTITUTION_NAME"/>
+        </createIndex>
+    </changeSet>
+	<changeSet id="create-16" author="pinnag" context="Anagrafiche_COUNTRY">
+        <createIndex tablespace="${indexesTablespaceName}" indexName="COUNTRY_IPRIM" tableName="COUNTRY" unique="true">
+            <column name="REC_STAT_FLAG"/>
+            <column name="COUN_CODE"/>
+        </createIndex>
+    </changeSet>
+	<changeSet id="create-17" author="pinnag" context="Anagrafiche_CURRENCY">
+        <createIndex tablespace="${indexesTablespaceName}" indexName="CURRENCY_IPRIM" tableName="CURRENCY" unique="true">
+            <column name="REC_STAT_FLAG"/>
+            <column name="CURR_CODE"/>
+            <column name="COUN_CODE"/>
+            <column name="REVISION"/>
+        </createIndex>
+    </changeSet>
+	<changeSet id="create-18" author="pinnag" context="Anagrafiche_GPI_DIRECTORY">
+        <createIndex tablespace="${indexesTablespaceName}" indexName="GPI_IPRIM" tableName="GPI_DIRECTORY" unique="true">
+            <column name="RECORD_KEY"/>
+            <column name="REVISION"/>
+            <column defaultValueNumeric="0" name="VERSION"/>
+        </createIndex>
+    </changeSet>
+	<changeSet id="create-19" author="pinnag" context="Anagrafiche_GPI_DIRECTORY">
+        <createIndex tablespace="${indexesTablespaceName}" indexName="GPI_PARTICIPANT_ID_INDX" tableName="GPI_DIRECTORY">
+            <column name="PARTICIPANT_ID"/>
+        </createIndex>
+    </changeSet>
+	<changeSet id="create-20" author="pinnag" context="Anagrafiche_IBAN_DIRECTORY_PLUS">
+        <createIndex tablespace="${indexesTablespaceName}" indexName="IBANPLUS_IPRIM" tableName="IBAN_DIRECTORY_PLUS" unique="true">
+            <column name="RECORD_KEY"/>
+            <column name="REVISION"/>
+            <column defaultValueNumeric="0" name="VERSION"/>
+        </createIndex>
+    </changeSet>
+	<changeSet id="create-21" author="pinnag" context="Anagrafiche_IBAN_DIRECTORY_PLUS">
+        <createIndex tablespace="${indexesTablespaceName}" indexName="IBANPLUS_BIC_INDX" tableName="IBAN_DIRECTORY_PLUS">
+            <column name="IBAN_BIC"/>
+        </createIndex>
+    </changeSet>
+	<changeSet id="create-22" author="pinnag" context="Anagrafiche_IBAN_DIRECTORY_PLUS">
+        <createIndex tablespace="${indexesTablespaceName}" indexName="IBANPLUS_INSNAME_INDX" tableName="IBAN_DIRECTORY_PLUS">
+            <column name="INSTITUTION_NAME"/>
+        </createIndex>
+    </changeSet>
+	<changeSet id="create-23" author="pinnag" context="Anagrafiche_TIPS_DIRECTORY">
+        <createIndex tablespace="${indexesTablespaceName}" indexName="TIPS_DIRECTORY_IPRIM" tableName="TIPS_DIRECTORY" unique="true">
+            <column name="USER_BIC"/>
+            <column name="REVISION"/>
+            <column defaultValueNumeric="0" name="VERSION"/>
+        </createIndex>
+    </changeSet>
+	<changeSet id="create-24" author="pinnag" context="Anagrafiche_TIPS_DIRECTORY">
+        <createIndex tablespace="${indexesTablespaceName}" indexName="TIPS_DIRECTORY_BIC_INDX" tableName="TIPS_DIRECTORY">
+            <column name="USER_BIC"/>
+        </createIndex>
+    </changeSet>
+	<changeSet id="create-25" author="pinnag" context="Anagrafiche_TIPS_DIRECTORY">
+        <createIndex tablespace="${indexesTablespaceName}" indexName="TIPS_DIRECTORY_INSNAME_INDX" tableName="TIPS_DIRECTORY">
+            <column name="INSTITUTION_NAME"/>
+        </createIndex>
+    </changeSet>
+	<changeSet id="create-26" author="pinnag" context="Anagrafiche_BANK_DIRECTORY_PLUS">
+        <createSequence cycle="true" sequenceName="BANKPLUS_ID_SEQ" startValue="1" incrementBy="1" maxValue="9223372036854775807"/>
+    </changeSet>
+	<changeSet id="create-27" author="pinnag" context="Anagrafiche_BIC_DIRECTORY">
+        <createSequence cycle="true" sequenceName="BICDIR_ID_SEQ" startValue="1" incrementBy="1" maxValue="9223372036854775807"/>
+    </changeSet>
+	<changeSet id="create-28" author="pinnag" context="Anagrafiche_BIC_DIRECTORY_PLUS">
+        <createSequence cycle="true" sequenceName="BICPLUS_ID_SEQ" startValue="1" incrementBy="1" maxValue="9223372036854775807"/>
+    </changeSet>
+	<changeSet id="create-29" author="pinnag" context="Anagrafiche_COUNTRY">
+        <createSequence cycle="true" sequenceName="COUNTRY_ID" startValue="1" incrementBy="1" maxValue="9223372036854775807"/>
+    </changeSet>
+	<changeSet id="create-30" author="pinnag" context="Anagrafiche_CURRENCY">
+        <createSequence cycle="true" sequenceName="CURRENCY_ID" startValue="1" incrementBy="1" maxValue="9223372036854775807"/>
+    </changeSet>
+	<changeSet id="create-31" author="pinnag" context="Anagrafiche_GPI_DIRECTORY">
+        <createSequence cycle="true" sequenceName="GPI_ID_SEQ" startValue="1" incrementBy="1" maxValue="9223372036854775807"/>
+    </changeSet>
+	<changeSet id="create-32" author="pinnag" context="Anagrafiche_IBAN_DIRECTORY_PLUS">
+        <createSequence cycle="true" sequenceName="IBANPLUS_ID_SEQ" startValue="1" incrementBy="1" maxValue="9223372036854775807"/>
+    </changeSet>
+	<changeSet id="create-33" author="pinnag" context="Anagrafiche_TIPS_DIRECTORY">
+        <createSequence cycle="true" sequenceName="TIPS_DIRECTORY_ID_SEQ" startValue="1" incrementBy="1" maxValue="9223372036854775807"/>
+    </changeSet>
+</databaseChangeLog>
