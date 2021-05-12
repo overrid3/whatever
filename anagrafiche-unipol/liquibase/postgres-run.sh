@@ -91,3 +91,4 @@ printf "\n\nExecuting Liquibase to EXECUTE SQL for $DB_OWNER_USERNAME...\n\n"
     -Dliquibasetype=two \
     -DuseDatabaseChangeLog=true
 printf "\n\ndone\n\n\n\n"
+sleep 20m

@@ -10,7 +10,7 @@ ADD ./liquibase/tasgroupDBDriver.jar /liquibase/lib/
 ADD ./delivery/liquibase/ /liquibase/changelog/
 
 ADD ./liquibase/postgres-run.sh /liquibase
-ADD ./liquibase/env.properties /liquibase
+ADD ./delivery/liquibase/env.properties /liquibase
 
 USER root
 RUN chmod -R 777 /liquibase
