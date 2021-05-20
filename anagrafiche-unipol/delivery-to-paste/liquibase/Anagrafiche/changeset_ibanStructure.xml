@@ -72,7 +72,8 @@
         </createTable>
     </changeSet>
     	<changeSet id="issue-35-create-sequence-id" author="garofalof" context="CommonAnagrafiche_IBAN_STRUCTURE">
-        <createSequence cycle="true" sequenceName="IBAN_STRUCTURE_ID_SEQ" startValue="1" incrementBy="1" maxValue="9223372036854775807"/>
+            <validCheckSum>ANY</validCheckSum>
+        <createSequence cycle="true" sequenceName="IBAN_STRUCTURE_ID_SEQ" startValue="1" incrementBy="1" />
     </changeSet>
     <changeSet id="issue-35-create-index-country-code" author="garofalof" context="CommonAnagrafiche_IBAN_STRUCTURE">
         <createIndex tablespace="${indexesTablespaceName}" indexName="IBAN_COUNTRY_CODE_INDEX" tableName="IBAN_STRUCTURE" unique ="true">

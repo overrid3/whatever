@@ -139,6 +139,7 @@
     </changeSet>
 
 	<changeSet id="create-3" author="pinnag" context="Anagrafiche_BIC_DIRECTORY_PLUS">
+        <validCheckSum>ANY</validCheckSum>
         <createTable tablespace="${tablesTablespaceName}" remarks="SWIFT Bic Directory Plus" tableName="BIC_DIRECTORY_PLUS">
             <column name="ID" type="number">
                 <constraints primaryKey="true" primaryKeyName="BICPLUS_PRIM"/>
@@ -183,7 +184,7 @@
             <column name="SWIFT_IA" remarks="Y/N connected InterAct" type="varchar(1 BYTE)">
                 <constraints nullable="false"/>
             </column>
-            <column name="LEGAL_NAME" type="varchar(105)"/>
+            <column name="LEGAL_NAME" type="varchar(105 ${varcharUnit})"/>
             <column name="INSTITUTION_NAME" type="varchar(105 BYTE)">
                 <constraints nullable="false"/>
             </column>
@@ -193,14 +194,14 @@
             <column name="ENTITY_TYPE" type="varchar(16 BYTE)">
                 <constraints nullable="false"/>
             </column>
-            <column name="RE_STREET_01" remarks="[Branch] Street name" type="varchar(35)"/>
-            <column name="RE_STREET_02" remarks="[Branch] Street number" type="varchar(35)"/>
-            <column name="RE_STREET_03" remarks="[Branch] Building name, floor" type="varchar(35)"/>
-            <column name="RE_STREET_04" remarks="[Branch] Area" type="varchar(35)"/>
-            <column name="RE_CITY" type="varchar(35)"/>
-            <column name="RE_CPS" remarks="[Branch] Country, province, state" type="varchar(90)"/>
-            <column name="RE_ZIP_CODE" type="varchar(15)"/>
-            <column name="RE_POB_NR" type="varchar(35)"/>
+            <column name="RE_STREET_01" remarks="[Branch] Street name" type="varchar(35 ${varcharUnit})"/>
+            <column name="RE_STREET_02" remarks="[Branch] Street number" type="varchar(35 ${varcharUnit})"/>
+            <column name="RE_STREET_03" remarks="[Branch] Building name, floor" type="varchar(35 ${varcharUnit})"/>
+            <column name="RE_STREET_04" remarks="[Branch] Area" type="varchar(35 ${varcharUnit})"/>
+            <column name="RE_CITY" type="varchar(35 ${varcharUnit})"/>
+            <column name="RE_CPS" remarks="[Branch] Country, province, state" type="varchar(90 ${varcharUnit})"/>
+            <column name="RE_ZIP_CODE" type="varchar(15 ${varcharUnit})"/>
+            <column name="RE_POB_NR" type="varchar(35 ${varcharUnit})"/>
             <column name="OP_STREET_01" type="varchar(35 BYTE)"/>
             <column name="OP_STREET_02" type="varchar(35 BYTE)"/>
             <column name="OP_STREET_03" type="varchar(35 BYTE)"/>
@@ -577,27 +578,35 @@
         </createIndex>
     </changeSet>
 	<changeSet id="create-26" author="pinnag" context="Anagrafiche_BANK_DIRECTORY_PLUS">
-        <createSequence cycle="true" sequenceName="BANKPLUS_ID_SEQ" startValue="1" incrementBy="1" maxValue="9223372036854775807"/>
+        <validCheckSum>ANY</validCheckSum>
+        <createSequence cycle="true" sequenceName="BANKPLUS_ID_SEQ" startValue="1" incrementBy="1"/>
     </changeSet>
 	<changeSet id="create-27" author="pinnag" context="Anagrafiche_BIC_DIRECTORY">
-        <createSequence cycle="true" sequenceName="BICDIR_ID_SEQ" startValue="1" incrementBy="1" maxValue="9223372036854775807"/>
+        <validCheckSum>ANY</validCheckSum>
+        <createSequence cycle="true" sequenceName="BICDIR_ID_SEQ" startValue="1" incrementBy="1" />
     </changeSet>
 	<changeSet id="create-28" author="pinnag" context="Anagrafiche_BIC_DIRECTORY_PLUS">
-        <createSequence cycle="true" sequenceName="BICPLUS_ID_SEQ" startValue="1" incrementBy="1" maxValue="9223372036854775807"/>
+        <validCheckSum>ANY</validCheckSum>
+        <createSequence cycle="true" sequenceName="BICPLUS_ID_SEQ" startValue="1" incrementBy="1" />
     </changeSet>
 	<changeSet id="create-29" author="pinnag" context="Anagrafiche_COUNTRY">
-        <createSequence cycle="true" sequenceName="COUNTRY_ID" startValue="1" incrementBy="1" maxValue="9223372036854775807"/>
+        <validCheckSum>ANY</validCheckSum>
+        <createSequence cycle="true" sequenceName="COUNTRY_ID" startValue="1" incrementBy="1" />
     </changeSet>
 	<changeSet id="create-30" author="pinnag" context="Anagrafiche_CURRENCY">
-        <createSequence cycle="true" sequenceName="CURRENCY_ID" startValue="1" incrementBy="1" maxValue="9223372036854775807"/>
+        <validCheckSum>ANY</validCheckSum>
+        <createSequence cycle="true" sequenceName="CURRENCY_ID" startValue="1" incrementBy="1" />
     </changeSet>
 	<changeSet id="create-31" author="pinnag" context="Anagrafiche_GPI_DIRECTORY">
-        <createSequence cycle="true" sequenceName="GPI_ID_SEQ" startValue="1" incrementBy="1" maxValue="9223372036854775807"/>
+        <validCheckSum>ANY</validCheckSum>
+        <createSequence cycle="true" sequenceName="GPI_ID_SEQ" startValue="1" incrementBy="1" />
     </changeSet>
 	<changeSet id="create-32" author="pinnag" context="Anagrafiche_IBAN_DIRECTORY_PLUS">
-        <createSequence cycle="true" sequenceName="IBANPLUS_ID_SEQ" startValue="1" incrementBy="1" maxValue="9223372036854775807"/>
+        <validCheckSum>ANY</validCheckSum>
+        <createSequence cycle="true" sequenceName="IBANPLUS_ID_SEQ" startValue="1" incrementBy="1" />
     </changeSet>
 	<changeSet id="create-33" author="pinnag" context="Anagrafiche_TIPS_DIRECTORY">
-        <createSequence cycle="true" sequenceName="TIPS_DIRECTORY_ID_SEQ" startValue="1" incrementBy="1" maxValue="9223372036854775807"/>
+        <validCheckSum>ANY</validCheckSum>
+        <createSequence cycle="true" sequenceName="TIPS_DIRECTORY_ID_SEQ" startValue="1" incrementBy="1" />
     </changeSet>
 </databaseChangeLog>

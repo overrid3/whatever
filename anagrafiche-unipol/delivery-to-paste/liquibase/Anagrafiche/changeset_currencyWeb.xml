@@ -2,7 +2,8 @@
 <databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.6.xsd">
 
   <changeSet id="issue-38-create-sequence-id" author="garofalof" context="CommonAnagrafiche_CURRENCY_WEB">
-        <createSequence cycle="true" sequenceName="CURRENCY_WEB_ID_SEQ" startValue="1" incrementBy="1" maxValue="9223372036854775807"/>
+        <validCheckSum>ANY</validCheckSum>
+        <createSequence cycle="true" sequenceName="CURRENCY_WEB_ID_SEQ" startValue="1" incrementBy="1" />
     </changeSet> 
  <changeSet id="issue-38-create-table" author="garofalof" context="CommonAnagrafiche_CURRENCY_WEB">
         <createTable tablespace="${tablesTablespaceName}" remarks="SWIFT Currency Web Code" tableName="CURRENCY_WEB">
