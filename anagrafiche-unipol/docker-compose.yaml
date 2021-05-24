@@ -4,7 +4,7 @@ services:
     container_name: mq-unipol
     image: dkr-registry.tasgroup.it/supportwas/activemq5:5.15.14
     ports:
-      - 8161:8162
+      - 8161:8161
 
   database:
     container_name: postgres-unipol
