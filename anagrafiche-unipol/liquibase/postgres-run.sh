@@ -83,6 +83,7 @@ printf "\n\nExecuting Liquibase to EXECUTE SQL for $DB_OWNER_USERNAME...\n\n"
     --password=$DB_OWNER_PASSWORD \
     --contexts=$CONTEXTS \
     --logLevel=debug --logFile=./liquibase_owner.log \
+    --outputFile=./update_owner.sql \
     update \
     -Ddbowner=$DB_OWNER \
     -Ddbuser=$DB_USER \

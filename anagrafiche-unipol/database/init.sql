@@ -1,12 +1,36 @@
-CREATE USER "DB_OWNER" PASSWORD 'DB_OWNER';
-CREATE USER "DB_USER" PASSWORD 'DB_USER';
+-- ----------------------------------------------------------------------
+--
+-- Sample commands to init database for TAS FIN solution using PostgreSQL
+-- 'psql' command line interface. Customize it to suit your needs.
+--
+-- ----------------------------------------------------------------------
+ 
+--
+-- Create roles
+--
+--CREATE ROLE db_owner LOGIN PASSWORD 'db_owner' NOSUPERUSER INHERIT NOCREATEDB NOCREATEROLE;
+--CREATE ROLE db_user LOGIN PASSWORD 'db_user' NOSUPERUSER INHERIT NOCREATEDB NOCREATEROLE;
+\echo 'Creating roles: db_owner, db_user';
+CREATE ROLE "db_owner" LOGIN PASSWORD 'db_owner' NOSUPERUSER INHERIT NOCREATEDB NOCREATEROLE;
+CREATE ROLE "db_user" LOGIN PASSWORD 'db_user' NOSUPERUSER INHERIT NOCREATEDB NOCREATEROLE;
+--
+-- Create and connect to Database
+--
+--CREATE DATABASE database OWNER db_owner ENCODING = 'UTF8' TABLESPACE DEFAULT;
+--GRANT ALL ON DATABASE database to db_owner;
+\echo 'creating database';
+CREATE DATABASE database OWNER "db_owner" ENCODING = 'UTF8' TABLESPACE DEFAULT;
+\echo 'granting all on database database to db_owner';
+GRANT ALL ON DATABASE database to "db_owner";
 
-CREATE TABLESPACE TS_INDEX
-    OWNER "DB_OWNER"
-    LOCATION '/var/lib/postgresql/TS_INDEX';
-CREATE TABLESPACE TS_DATA
-    OWNER "DB_OWNER"
-    LOCATION '/var/lib/postgresql/TS_DATA';
+\echo 'Connecting to database';
+\connect database
 
-GRANT ALL PRIVILEGES ON DATABASE postgres TO "DB_USER";
-GRANT ALL PRIVILEGES ON DATABASE postgres TO "DB_OWNER";
+--
+-- Create schemas and assign grants
+--
+GRANT USAGE ON SCHEMA public TO "db_user";
+
+--COMMIT;
+--\echo 'Committed!';
+-- EOF

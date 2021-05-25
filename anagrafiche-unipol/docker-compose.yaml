@@ -22,23 +22,23 @@ services:
 #    tty: true
 #    entrypoint: /bin/sh
     build:
-      context: .
-      dockerfile: ./liquibase/Dockerfile
+      context: ./delivery/liquibase
+      dockerfile: postgres.Dockerfile
     image: local/netgat/message-repair/liquibase-unipol
     environment:
       - CLASSPATH=changelog
-      - CONNECTION_STRING_OWNER=jdbc:postgresql://database:5432/postgres
+      - CONNECTION_STRING_OWNER=jdbc:postgresql://postgres12.dev.int.master.lan:5432/svi_anag_unipol
       - CHANGE_LOG_DDL_OWNER=master_changelog_owner.xml
 #      - CHANGE_LOG_DDL_USER=/liquibase/changelog/master_changelog_user.xml
-      - DB_OWNER_USERNAME=DB_OWNER
-      - DB_OWNER_PASSWORD=DB_OWNER
+      - DB_OWNER_USERNAME=svi_anag_unipol_owner
+      - DB_OWNER_PASSWORD=svi_anag_unipol_owner
 #      - CONNECTION_STRING_USER=offline:postgresql?outputLiquibaseSql=true&changeLogFile=changelog.csv
-      - DB_USER_USERNAME=DB_USER
-      - DB_USER_PASSWORD=DB_USER
-      - DATA_TABLE_SPACE=TS_DATA
-      - INDEX_TABLE_SPACE=TS_INDEX
-      - DB_OWNER=DB_OWNER
-      - DB_USER=DB_USER
+      - DB_USER_USERNAME=svi_anag_unipol_user
+      - DB_USER_PASSWORD=svi_anag_unipol_user
+      - DATA_TABLE_SPACE=PG_DEFAULT
+      - INDEX_TABLE_SPACE=PG_DEFAULT
+      - DB_OWNER=svi_anag_unipol_owner
+      - DB_USER=svi_anag_unipol_user
 #      - CONTEXTS=user_profiler_ROLE,DriverCommon_J0TCURRENT_REVISION,DriverCommon_J0TMQDUMPER,DriverCommon_J0TRESOURCES_ZIP,DriverCommon_J1TWORKING_PROCESS,DriverCommon_YWTWIBAP,DriverCommon_JETSTARTUP,DriverCommon_JETNETWORK_MESSAGE_SUSP,CommonMonitor_J0TDOMAIN,CommonMonitor_J0TGROU_EVID,CommonMonitor_J0TGROU_EVID_REL,CommonMonitor_J0TTOPIC,CommonMonitor_J0TTSINS,CommonMonitor_J0TTSRTS,CommonMonitor_J0TORGANIZATION,CommonMonitor_J0TTSINP,CommonMonitor_J0TTSISR,CommonMonitor_J0TTSOUS,CommonMonitor_J0TTSOUT,CommonMonitor_J0TTSSTA,CommonMonitor_J0TREQUEST_TYPE,CommonMonitor_J0TTTRSZ,CommonAdmin_J0TTEMPLATE,Anagrafiche_BANK_DIRECTORY_PLUS,Anagrafiche_BIC_DIRECTORY_PLUS,Anagrafiche_COUNTRY,Anagrafiche_CURRENCY,Anagrafiche_GPI_DIRECTORY,Anagrafiche_IBAN_DIRECTORY_PLUS,CommonAnagrafiche_CURRENCY_WEB,CommonAnagrafiche_IBAN_STRUCTURE,Anagrafiche_TIPS_DIRECTORY
 
 #    depends_on:
