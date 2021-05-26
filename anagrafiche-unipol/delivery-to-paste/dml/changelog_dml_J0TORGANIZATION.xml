@@ -3,26 +3,42 @@
 	xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.6.xsd">
 
-    <changeSet author="bulgarellic" id="populate-J0TORGANIZATION">
-		<insert tableName="J0TORGANIZATION">
-            <column name="PATH" value="00000000-DEFAU"/>
-            <column name="FIRST" value="00000000"/>
-            <column name="SECOND" value="DEFAU"/>
-            <column name="ISDEFAULT" valueNumeric="1"/>
-        </insert>
-		<insert tableName="J0TORGANIZATION">
-            <column name="PATH" value="00000000-DEFAU1"/>
-            <column name="FIRST" value="00000000"/>
-            <column name="SECOND" value="DEFAU1"/>
-        </insert>
-		<insert tableName="J0TORGANIZATION">
-            <column name="PATH" value="00000000-DEFAU2"/>
-            <column name="FIRST" value="00000000"/>
-            <column name="SECOND" value="DEFAU2"/>
-        </insert>
+    <changeSet author="digiovannia" id="populate-J0TORGANIZATION">
 		<insert tableName="J0TORGANIZATION">
             <column name="PATH" value="00000000"/>
             <column name="FIRST" value="00000000"/>
+            <column name="SECOND" value="null"/>
+            <column name="THIRD" value="null"/>
+            <column name="FOURTH" value="null"/>
+            <column name="FIFTH" value="null"/>
+            <column name="ISDEFAULT" valueNumeric="0"/>
+        </insert>
+        <insert tableName="J0TORGANIZATION">
+            <column name="PATH" value="00000000-DEFAU"/>
+            <column name="FIRST" value="00000000"/>
+            <column name="SECOND" value="DEFAU"/>
+            <column name="THIRD" value="null"/>
+            <column name="FOURTH" value="null"/>
+            <column name="FIFTH" value="null"/>
+            <column name="ISDEFAULT" valueNumeric="1"/>
+        </insert>
+        <insert tableName="J0TORGANIZATION">
+            <column name="PATH" value="00000000-DEFAU1"/>
+            <column name="FIRST" value="00000000"/>
+            <column name="SECOND" value="DEFAU1"/>
+            <column name="THIRD" value="null"/>
+            <column name="FOURTH" value="null"/>
+            <column name="FIFTH" value="null"/>
+            <column name="ISDEFAULT" valueNumeric="0"/>
+        </insert>
+        <insert tableName="J0TORGANIZATION">
+            <column name="PATH" value="00000000-DEFAU2"/>
+            <column name="FIRST" value="00000000"/>
+            <column name="SECOND" value="DEFAU2"/>
+            <column name="THIRD" value="null"/>
+            <column name="FOURTH" value="null"/>
+            <column name="FIFTH" value="null"/>
+            <column name="ISDEFAULT" valueNumeric="0"/>
         </insert>
     </changeSet>
 </databaseChangeLog>

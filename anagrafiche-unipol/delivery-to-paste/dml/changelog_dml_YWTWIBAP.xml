@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.6.xsd">
+
+    <changeSet author="digiovannia" id="populate-YWTWIBAP">
+        <insert tableName="YWTWIBAP">
+            <column name="REC_TYPE_FLAG" value="null"/>
+            <column name="REC_STAT_FLAG" value="V"/>
+            <column name="REC_VALI_DATE" valueDate="${now}"/>
+            <column name="RECO_KEY" valueNumeric="1"/>
+            <column name="INST_NAME" value="null"/>
+            <column name="BRAN_INFO" value="null"/>
+            <column name="COUN_NAME" value="null"/>
+            <column name="ISO_COUN_CODE" value="IT"/>
+            <column name="IBAN_COUN_CODE" value="null"/>
+            <column name="IBAN_BIC" value="PASCITM1XXX"/>
+            <column name="ROUT_BIC" value="null"/>
+            <column name="NATI_BANK_ID" valueNumeric="01030"/>
+            <column name="SERV_LEVE" value="null"/>
+            <column name="FIELD_A" value="null"/>
+            <column name="FIELD_B" value="null"/>
+            <column name="UPDA_DATE" value="null"/>
+            <column name="USER_UPDT" value="null"/>
+            <column name="TMST_UPDT" value="null"/>
+        </insert>
+        <insert tableName="YWTWIBAP">
+            <column name="REC_TYPE_FLAG" value="null"/>
+            <column name="REC_STAT_FLAG" value="V"/>
+            <column name="REC_VALI_DATE" valueDate="${now}"/>
+            <column name="RECO_KEY" valueNumeric="3"/>
+            <column name="INST_NAME" value="null"/>
+            <column name="BRAN_INFO" value="null"/>
+            <column name="COUN_NAME" value="null"/>
+            <column name="ISO_COUN_CODE" value="IT"/>
+            <column name="IBAN_COUN_CODE" value="null"/>
+            <column name="IBAN_BIC" value="CSSMSMS0XXX"/>
+            <column name="ROUT_BIC" value="null"/>
+            <column name="NATI_BANK_ID" valueNumeric="01020"/>
+            <column name="SERV_LEVE" value="null"/>
+            <column name="FIELD_A" value="null"/>
+            <column name="FIELD_B" value="null"/>
+            <column name="UPDA_DATE" value="null"/>
+            <column name="USER_UPDT" value="null"/>
+            <column name="TMST_UPDT" value="null"/>
+        </insert>
+        <insert tableName="YWTWIBAP">
+            <column name="REC_TYPE_FLAG" value="null"/>
+            <column name="REC_STAT_FLAG" value="V"/>
+            <column name="REC_VALI_DATE" valueDate="${now}"/>
+            <column name="RECO_KEY" valueNumeric="2"/>
+            <column name="INST_NAME" value="null"/>
+            <column name="BRAN_INFO" value="null"/>
+            <column name="COUN_NAME" value="null"/>
+            <column name="ISO_COUN_CODE" value="IT"/>
+            <column name="IBAN_COUN_CODE" value="null"/>
+            <column name="IBAN_BIC" value="CAMBITRRXXX"/>
+            <column name="ROUT_BIC" value="null"/>
+            <column name="NATI_BANK_ID" valueNumeric="01000"/>
+            <column name="SERV_LEVE" value="null"/>
+            <column name="FIELD_A" value="null"/>
+            <column name="FIELD_B" value="null"/>
+            <column name="UPDA_DATE" value="null"/>
+            <column name="USER_UPDT" value="null"/>
+            <column name="TMST_UPDT" value="null"/>
+        </insert>
+    </changeSet>
+</databaseChangeLog>
