@@ -42,7 +42,7 @@
         </insert>
 		<insert tableName="J0TXINFO">
             <column name="ID" value="7"/>
-            <column name="TMSTLOWERBOUND" date="${now}"/>
+            <column name="TMSTLOWERBOUND" valueDate="${now}"/>
             <column name="DOMAIN" value="NULL"/>
             <column name="ORGANIZATION" value="NULL"/>
             <column name="USER_CODE" value="RequestTypeStatus"/>
@@ -51,7 +51,7 @@
         </insert>
 		<insert tableName="J0TXINFO">
             <column name="ID" value="8"/>
-            <column name="TMSTLOWERBOUND" date="${now}"/>
+            <column name="TMSTLOWERBOUND" valueDate="${now}"/>
             <column name="DOMAIN" value="NULL"/>
             <column name="ORGANIZATION" value="NULL"/>
             <column name="USER_CODE" value="InputChannelStatus"/>
@@ -60,7 +60,7 @@
         </insert>
 		<insert tableName="J0TXINFO">
             <column name="ID" value="9"/>
-            <column name="TMSTLOWERBOUND" date="${now}"/>
+            <column name="TMSTLOWERBOUND" valueDate="${now}"/>
             <column name="DOMAIN" value="NULL"/>
             <column name="ORGANIZATION" value="NULL"/>
             <column name="USER_CODE" value="OutputChannelStatus"/>
@@ -69,7 +69,7 @@
         </insert>
 		<insert tableName="J0TXINFO">
             <column name="ID" value="10"/>
-            <column name="TMSTLOWERBOUND" date="${now}"/>
+            <column name="TMSTLOWERBOUND" valueDate="${now}"/>
             <column name="DOMAIN" value="NULL"/>
             <column name="ORGANIZATION" value="NULL"/>
             <column name="USER_CODE" value="RequestTypeStatusCoarse"/>
@@ -78,7 +78,7 @@
         </insert>
 		<insert tableName="J0TXINFO">
             <column name="ID" value="11"/>
-            <column name="TMSTLOWERBOUND" date="${now}"/>
+            <column name="TMSTLOWERBOUND" valueDate="${now}"/>
             <column name="DOMAIN" value="NULL"/>
             <column name="ORGANIZATION" value="NULL"/>
             <column name="USER_CODE" value="InputChannelStatusCoarse"/>
@@ -87,7 +87,7 @@
         </insert>
 		<insert tableName="J0TXINFO">
             <column name="ID" value="12"/>
-            <column name="TMSTLOWERBOUND" date="${now}"/>
+            <column name="TMSTLOWERBOUND" valueDate="${now}"/>
             <column name="DOMAIN" value="NULL"/>
             <column name="ORGANIZATION" value="NULL"/>
             <column name="USER_CODE" value="OutputChannelStatusCoarse"/>

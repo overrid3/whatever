@@ -1,0 +1,786 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.6.xsd">
+	<changeSet id="create-1" author="pasquinian" context="CommonMonitor_J0TDOMAIN">
+		<validCheckSum>any</validCheckSum>
+		<createTable tablespace="${tablesTablespaceName}" tableName="J0TDOMAIN">
+			<column name="NAME" type="varchar(150 BYTE)">
+				<constraints nullable="false"/>
+			</column>
+			<column name="PATH" type="varchar(150 BYTE)">
+				<constraints nullable="false"/>
+			</column>
+			<column name="FIRST" type="varchar(30 BYTE)">
+				<constraints nullable="false"/>
+			</column>
+			<column name="SECOND" type="varchar(30 BYTE)"/>
+			<column name="THIRD" type="varchar(30 BYTE)"/>
+			<column name="IS_INDEXED" type="boolean"/>
+			<column name="IS_BACKOUT" type="boolean"/>
+			<column name="IS_TOPIC" type="boolean"/>
+			<column name="IS_IMPLICIT" type="boolean"/>
+			<column defaultValueComputed="CURRENT_TIMESTAMP" name="TMST_INS" type="timestamp(6)">
+				<constraints nullable="false"/>
+			</column>
+		</createTable>
+		<createIndex tablespace="${tablesTablespaceName}" indexName="J0TDOMAIN_PK" tableName="J0TDOMAIN" unique="true">
+			<column name="PATH"/>
+		</createIndex>
+		<createIndex tablespace="${tablesTablespaceName}" indexName="J0TDOMAIN_IDX1" tableName="J0TDOMAIN">
+			<column name="FIRST"/>
+		</createIndex>
+		<createIndex tablespace="${tablesTablespaceName}" indexName="J0TDOMAIN_IDX2" tableName="J0TDOMAIN">
+			<column name="SECOND"/>
+		</createIndex>
+		<createIndex tablespace="${tablesTablespaceName}" indexName="J0TDOMAIN_IDX3" tableName="J0TDOMAIN">
+			<column name="THIRD"/>
+		</createIndex>
+	</changeSet>
+
+	<changeSet id="create-2" author="pasquinian" context="CommonMonitor_J0TGROU_EVID">
+		<validCheckSum>any</validCheckSum>
+		<createTable tablespace="${tablesTablespaceName}" tableName="J0TGROU_EVID">
+			<column name="ID" type="number(18, 0)">
+				<constraints nullable="false"/>
+			</column>
+			<column name="TIMESTAMP" type="timestamp(6)">
+				<constraints nullable="false"/>
+			</column>
+			<column name="TIMESTAMP_L_M" type="timestamp(6)">
+				<constraints nullable="false"/>
+			</column>
+			<column name="COUNTERPART_C_K" type="varchar(100 BYTE)"/>
+			<column name="APPL_REFE" type="varchar(100 BYTE)"/>
+			<column name="SERVICEID" type="varchar(50 BYTE)"/>
+			<column name="POSSIBLE_DUP" type="boolean"/>
+			<column name="USER_PARA_1" type="varchar(100 BYTE)"/>
+			<column name="USER_PARA_2" type="varchar(100 BYTE)"/>
+			<column name="REQUESTTYPE" type="varchar(100 BYTE)"/>
+			<column name="REMOTEADDRESS" type="varchar(100 BYTE)"/>
+			<column name="REMOTEADDRESSTYPE" type="varchar(1 BYTE)"/>
+			<column name="LOCALADDRESS" type="varchar(100 BYTE)"/>
+			<column name="LOCALADDRESSTYPE" type="varchar(1 BYTE)"/>
+			<column name="ERROR_CODES" type="varchar(500 BYTE)"/>
+			<column name="ERROR_DESCRS" type="varchar(4000 BYTE)"/>
+			<column name="CORRELATIONID" type="varchar(100 BYTE)">
+				<constraints nullable="false"/>
+			</column>
+			<column name="DOMAIN" type="varchar(100 BYTE)">
+				<constraints nullable="false"/>
+			</column>
+			<column name="ORGANIZATION" type="varchar(100 BYTE)">
+				<constraints nullable="false"/>
+			</column>
+			<column name="TIMESTAMP_FIR" type="timestamp(6)">
+				<constraints nullable="false"/>
+			</column>
+			<column name="TIMESTAMP_LAS" type="timestamp(6)">
+				<constraints nullable="false"/>
+			</column>
+			<column name="STATUS" type="varchar(100 BYTE)"/>
+			<column name="STATUSTYPE" type="varchar(30 BYTE)"/>
+			<column name="NUM_SUSP_MESS" type="int"/>
+			<column name="IN_CONF_REF" type="varchar(100 BYTE)"/>
+			<column name="IN_MODULE_NAME" type="varchar(30 BYTE)"/>
+			<column name="IN_RES_ID" type="varchar(1024 BYTE)"/>
+			<column name="IN_RES_TYPE" type="varchar(2 BYTE)"/>
+			<column name="IN_MESS_ID" type="varchar(100 BYTE)"/>
+			<column name="IN_CORR_KEY" type="varchar(512 BYTE)"/>
+			<column name="IN_RES_TMST" type="timestamp(6)"/>
+			<column name="OUT_CONF_REF" type="varchar(100 BYTE)"/>
+			<column name="OUT_MODULE_NAME" type="varchar(30 BYTE)"/>
+			<column name="OUT_RES_ID" type="varchar(1024 BYTE)"/>
+			<column name="OUT_RES_TYPE" type="varchar(2 BYTE)"/>
+			<column name="OUT_MESS_ID" type="varchar(100 BYTE)"/>
+			<column name="OUT_CORR_KEY" type="varchar(512 BYTE)"/>
+			<column name="OUT_RES_TMST" type="timestamp(6)"/>
+			<column name="BUFFER_IN_EVIDENCE_ID" type="number(18, 0)"/>
+			<column name="BUFFER_OUT_EVIDENCE_ID" type="number(18, 0)"/>
+			<column name="BUFFER_IN_SIZE" type="number(18, 0)"/>
+			<column name="BUFFER_OUT_SIZE" type="number(18, 0)"/>
+			<column name="LOGICAL_NAME" type="varchar(100 BYTE)"/>
+			<column name="APPLICATION" type="varchar(30 BYTE)"/>
+			<column name="RELEVANT_RELS_NO" type="int"/>
+			<column name="WARNING_ENCOUNTERED" type="boolean"/>
+		</createTable>
+		<createIndex tablespace="${tablesTablespaceName}" indexName="J0TGROU_EVID_PK" tableName="J0TGROU_EVID" unique="true">
+			<column name="ID"/>
+		</createIndex>
+		<createIndex tablespace="${tablesTablespaceName}" indexName="J0TGROU_EVID_IDX1" tableName="J0TGROU_EVID">
+			<column name="TIMESTAMP"/>
+		</createIndex>
+		<createIndex tablespace="${tablesTablespaceName}" indexName="J0TGROU_EVID_IDX2" tableName="J0TGROU_EVID">
+			<column name="TIMESTAMP_L_M"/>
+		</createIndex>
+		<createIndex tablespace="${tablesTablespaceName}" indexName="J0TGROU_EVID_IDX3" tableName="J0TGROU_EVID">
+			<column name="TIMESTAMP_FIR"/>
+		</createIndex>
+		<createIndex tablespace="${tablesTablespaceName}" indexName="J0TGROU_EVID_IDX4" tableName="J0TGROU_EVID">
+			<column name="TIMESTAMP_LAS"/>
+		</createIndex>
+		<createIndex tablespace="${tablesTablespaceName}" indexName="J0TGROU_EVID_IDX5" tableName="J0TGROU_EVID">
+			<column name="ORGANIZATION"/>
+			<column name="DOMAIN"/>
+			<column name="TIMESTAMP_FIR"/>
+		</createIndex>
+		<createIndex tablespace="${tablesTablespaceName}" indexName="J0TGROU_EVID_IDX6" tableName="J0TGROU_EVID">
+			<column name="ORGANIZATION"/>
+			<column name="DOMAIN"/>
+			<column name="TIMESTAMP_LAS"/>
+		</createIndex>
+		<createIndex tablespace="${tablesTablespaceName}" indexName="J0TGROU_EVID_IDX7" tableName="J0TGROU_EVID">
+			<column name="ORGANIZATION"/>
+			<column name="DOMAIN"/>
+			<column name="TIMESTAMP_LAS"/>
+			<column name="LOCALADDRESS"/>
+			<column name="REMOTEADDRESS"/>
+		</createIndex>
+		<createIndex tablespace="${tablesTablespaceName}" indexName="J0TGROU_EVID_IDX8" tableName="J0TGROU_EVID">
+			<column name="ORGANIZATION"/>
+			<column name="DOMAIN"/>
+			<column name="TIMESTAMP_LAS"/>
+			<column name="STATUSTYPE"/>
+		</createIndex>
+		<createIndex tablespace="${tablesTablespaceName}" indexName="J0TGROU_EVID_IDX9" tableName="J0TGROU_EVID">
+			<column name="APPL_REFE"/>
+		</createIndex>
+		<createIndex tablespace="${tablesTablespaceName}" indexName="J0TGROU_EVID_IDX10" tableName="J0TGROU_EVID">
+			<column name="CORRELATIONID"/>
+		</createIndex>
+		<createIndex tablespace="${tablesTablespaceName}" indexName="J0TGROU_EVID_IDX11" tableName="J0TGROU_EVID">
+			<column name="LOGICAL_NAME"/>
+		</createIndex>
+		<createIndex tablespace="${tablesTablespaceName}" indexName="J0TGROU_EVID_IDX14" tableName="J0TGROU_EVID">
+			<column name="APPLICATION"/>
+		</createIndex>
+		<createSequence sequenceName="J0TGROU_EVID_ID_SEQ" startValue="1" incrementBy="1"/>
+	</changeSet>
+	<changeSet id="create-3" author="pasquinian" context="CommonMonitor_J0TGROU_EVID_REL">
+		<createTable tablespace="${tablesTablespaceName}" tableName="J0TGROU_EVID_REL">
+			<column name="FROM_ID" type="number(18, 0)">
+				<constraints nullable="false"/>
+			</column>
+			<column name="FROM_QUALIFIED" type="varchar(50 BYTE)">
+				<constraints nullable="false"/>
+			</column>
+			<column name="TO_CORRELATION_ID" type="varchar(100 BYTE)">
+				<constraints nullable="false"/>
+			</column>
+			<column name="TO_QUALIFIED" type="varchar(50 BYTE)">
+				<constraints nullable="false"/>
+			</column>
+			<column name="TO_ID" type="number(18, 0)"/>
+			<column name="RELATION_TYPE" type="varchar(50 BYTE)">
+				<constraints nullable="false"/>
+			</column>
+			<column defaultValueComputed="CURRENT_TIMESTAMP" name="TMST_INS" type="timestamp(6)">
+				<constraints nullable="false"/>
+			</column>
+		</createTable>
+		<createIndex tablespace="${tablesTablespaceName}" indexName="J0TGROU_EVID_REL_PK" tableName="J0TGROU_EVID_REL" unique="true">
+			<column name="FROM_ID"/>
+			<column name="FROM_QUALIFIED"/>
+			<column name="TO_CORRELATION_ID"/>
+			<column name="TO_QUALIFIED"/>
+		</createIndex>
+		<createIndex tablespace="${tablesTablespaceName}" indexName="J0TGROU_EVID_REL_IDX1" tableName="J0TGROU_EVID_REL">
+			<column defaultValueComputed="CURRENT_TIMESTAMP" name="TMST_INS"/>
+		</createIndex>
+	</changeSet>
+	<changeSet id="create-4" author="pasquinian" context="CommonMonitor_J0TGROU_EVID_REL_WITH_TOPICS">
+		<createTable tablespace="${tablesTablespaceName}" tableName="J0TGROU_EVID_REL">
+			<column name="FROM_ID" type="number(18, 0)">
+				<constraints nullable="false"/>
+			</column>
+			<column name="FROM_CORRELATION_ID" type="varchar(100 BYTE)">
+				<constraints nullable="false"/>
+			</column>
+			<column name="FROM_QUALIFIED" type="varchar(50 BYTE)">
+				<constraints nullable="false"/>
+			</column>
+			<column name="TO_CORRELATION_ID" type="varchar(100 BYTE)">
+				<constraints nullable="false"/>
+			</column>
+			<column name="TO_QUALIFIED" type="varchar(50 BYTE)">
+				<constraints nullable="false"/>
+			</column>
+			<column name="TO_ID" type="number(18, 0)"/>
+			<column name="RELATION_TYPE" type="varchar(50 BYTE)">
+				<constraints nullable="false"/>
+			</column>
+			<column name="LAST_TOPIC" type="number(18, 0)">
+				<constraints nullable="false"/>
+			</column>
+			<column name="DOMAIN" type="varchar(100 BYTE)">
+				<constraints nullable="false"/>
+			</column>
+			<column name="ORGANIZATION" type="varchar(100 BYTE)">
+				<constraints nullable="false"/>
+			</column>
+			<column defaultValueComputed="CURRENT_TIMESTAMP" name="TMST_INS" type="timestamp(6)">
+				<constraints nullable="false"/>
+			</column>
+		</createTable>
+		<createIndex tablespace="${tablesTablespaceName}" indexName="J0TGROU_EVID_REL_PK" tableName="J0TGROU_EVID_REL" unique="true">
+			<column name="FROM_ID"/>
+			<column name="FROM_QUALIFIED"/>
+			<column name="TO_CORRELATION_ID"/>
+			<column name="TO_QUALIFIED"/>
+		</createIndex>
+		<createIndex tablespace="${tablesTablespaceName}" indexName="J0TGROU_EVID_REL_IDX1" tableName="J0TGROU_EVID_REL">
+			<column defaultValueComputed="CURRENT_TIMESTAMP" name="TMST_INS"/>
+		</createIndex>
+		<createIndex indexName="J0TGROU_EVID_REL_IDX2" tableName="J0TGROU_EVID_REL">
+			<column name="LAST_TOPIC"/>
+		</createIndex>
+		<createIndex tablespace="${tablesTablespaceName}" indexName="J0TGROU_EVID_REL_IDX3" tableName="J0TGROU_EVID_REL">
+			<column name="FROM_CORRELATION_ID"/>
+			<column name="RELATION_TYPE"/>
+			<column name="TO_CORRELATION_ID"/>
+		</createIndex>
+		<createIndex tablespace="${tablesTablespaceName}" indexName="J0TGROU_EVID_REL_IDX4" tableName="J0TGROU_EVID_REL">
+			<column name="TO_CORRELATION_ID"/>
+		</createIndex>
+	</changeSet>
+	<changeSet id="create-5" author="pasquinian" context="CommonMonitor_J0TORGANIZATION">
+		<validCheckSum>ANY</validCheckSum>
+		<createTable tablespace="${tablesTablespaceName}" tableName="J0TORGANIZATION">
+			<column name="PATH" type="varchar(150 BYTE)">
+				<constraints nullable="false"/>
+			</column>
+			<column name="FIRST" type="varchar(30 BYTE)">
+				<constraints nullable="false"/>
+			</column>
+			<column name="SECOND" type="varchar(30 BYTE)"/>
+			<column name="THIRD" type="varchar(30 BYTE)"/>
+			<column name="FOURTH" type="varchar(30 BYTE)"/>
+			<column name="FIFTH" type="varchar(30 BYTE)"/>
+			<column defaultValueComputed="CURRENT_TIMESTAMP" name="TMST_INS" type="timestamp(6)">
+				<constraints nullable="false"/>
+			</column>
+			<column defaultValueNumeric="0" name="ISDEFAULT" type="boolean">
+				<constraints nullable="false"/>
+			</column>
+		</createTable>
+		<createIndex tablespace="${tablesTablespaceName}" indexName ="J0TORGANIZATION_PK" tableName="J0TORGANIZATION" unique="true">
+			<column name="PATH"/>
+		</createIndex> 
+		<createIndex tablespace="${tablesTablespaceName}" indexName="J0TORGANIZATION_IDX1" tableName="J0TORGANIZATION">
+			<column name="FIRST"/>
+		</createIndex> 
+		<createIndex tablespace="${tablesTablespaceName}" indexName="J0TORGANIZATION_IDX2" tableName="J0TORGANIZATION">
+			<column name="SECOND"/>
+		</createIndex> 
+		<createIndex tablespace="${tablesTablespaceName}" indexName="J0TORGANIZATION_IDX3" tableName="J0TORGANIZATION">
+			<column name="THIRD"/>
+		</createIndex> 
+		<createIndex tablespace="${tablesTablespaceName}" indexName="J0TORGANIZATION_IDX4" tableName="J0TORGANIZATION">
+			<column name="FOURTH"/>
+		</createIndex> 
+		<createIndex tablespace="${tablesTablespaceName}" indexName="J0TORGANIZATION_IDX5" tableName="J0TORGANIZATION">
+			<column name="FIFTH"/>
+		</createIndex> 
+	</changeSet>
+	<changeSet id="create-6" author="pasquinian" context="CommonMonitor_J0TTOPIC">
+		<createTable tablespace="${tablesTablespaceName}" tableName="J0TTOPIC">
+			<column name="ID" type="number(18, 0)">
+				<constraints nullable="false"/>
+			</column>
+			<column name="TIMESTAMP" type="timestamp(6)">
+				<constraints nullable="false"/>
+			</column>
+			<column name="CORRELATIONID" type="varchar(100 BYTE)">
+				<constraints nullable="false"/>
+			</column>
+			<column name="TIMESTAMP_L_I" type="timestamp(6)">
+				<constraints nullable="false"/>
+			</column>
+			<column name="ID_L_I" type="number(18, 0)">
+				<constraints nullable="false"/>
+			</column>
+			<column name="COUNTER" type="int"/>
+		</createTable>
+		<createIndex tablespace="${tablesTablespaceName}" indexName="J0TTOPIC_PK" tableName="J0TTOPIC" unique="true">
+			<column name="ID"/>
+		</createIndex> 
+		<createIndex tablespace="${tablesTablespaceName}" indexName="J0TTOPIC_IDX1" tableName="J0TTOPIC" unique="true">
+			<column name="CORRELATIONID"/>
+			<column name="ID_L_I"/>
+		</createIndex> 
+		<createIndex tablespace="${tablesTablespaceName}" indexName="J0TTOPIC_IDX2" tableName="J0TTOPIC">
+			<column name="CORRELATIONID"/>
+			<column name="ID"/>
+		</createIndex> 
+	</changeSet>
+	<changeSet id="create-7" author="pasquinian" context="CommonMonitor_J0TTSINP">
+		<createTable tablespace="${tablesTablespaceName}" tableName="J0TTSINP">
+			<column name="DOMAIN" type="varchar(100 BYTE)">
+				<constraints nullable="false"/>
+			</column>
+			<column name="ORGANIZATION" type="varchar(100 BYTE)">
+				<constraints nullable="false"/>
+			</column>
+			<column name="GRIT_SIZE" type="varchar(10 BYTE)">
+				<constraints nullable="false"/>
+			</column>
+			<column name="TIMESTAMP_STA" type="timestamp(6)">
+				<constraints nullable="false"/>
+			</column>
+			<column name="TIMESTAMP_END" type="timestamp(6)">
+				<constraints nullable="false"/>
+			</column>
+			<column name="TIMESTAMP_L_M" type="timestamp(6)">
+				<constraints nullable="false"/>
+			</column>
+			<column name="SUMSASSTRING" type="varchar(4000 BYTE)"/>
+			<column name="MAXDURATIONS" type="varchar(4000 BYTE)"/>
+			<column name="MINDURATIONS" type="varchar(4000 BYTE)"/>
+		</createTable>
+		<createIndex tablespace="${tablesTablespaceName}" indexName="J0TTSINP_PK" tableName="J0TTSINP" unique="true">
+			<column name="DOMAIN"/>
+			<column name="ORGANIZATION"/>
+			<column name="GRIT_SIZE"/>
+			<column name="TIMESTAMP_STA"/>
+			<column name="TIMESTAMP_END"/>
+		</createIndex> 
+	</changeSet>
+	<changeSet id="create-8" author="pasquinian" context="CommonMonitor_J0TTSINS">
+		<createTable tablespace="${tablesTablespaceName}" tableName="J0TTSINS">
+			<column name="DOMAIN" type="varchar(100 BYTE)">
+				<constraints nullable="false"/>
+			</column>
+			<column name="ORGANIZATION" type="varchar(100 BYTE)">
+				<constraints nullable="false"/>
+			</column>
+			<column name="GRIT_SIZE" type="varchar(10 BYTE)">
+				<constraints nullable="false"/>
+			</column>
+			<column name="TIMESTAMP_STA" type="timestamp(6)">
+				<constraints nullable="false"/>
+			</column>
+			<column name="TIMESTAMP_END" type="timestamp(6)">
+				<constraints nullable="false"/>
+			</column>
+			<column name="TIMESTAMP_L_M" type="timestamp(6)">
+				<constraints nullable="false"/>
+			</column>
+			<column name="COMPLETEDOK" type="varchar(4000 BYTE)"/>
+			<column name="COMPLETEDKO" type="varchar(4000 BYTE)"/>
+			<column name="SUSPENDED" type="varchar(4000 BYTE)"/>
+			<column name="SUSPENDEDFORERROR" type="varchar(4000 BYTE)"/>
+			<column name="NOTCOMPLETED" type="varchar(4000 BYTE)"/>
+			<column name="TOBEREVIEWED" type="varchar(4000 BYTE)"/>
+		</createTable>
+		<createIndex tablespace="${tablesTablespaceName}" indexName="J0TTSINS_PK" tableName="J0TTSINS" unique="true">
+			<column name="DOMAIN"/>
+			<column name="ORGANIZATION"/>
+			<column name="GRIT_SIZE"/>
+			<column name="TIMESTAMP_STA"/>
+			<column name="TIMESTAMP_END"/>
+		</createIndex> 
+	</changeSet>
+	<changeSet id="create-9" author="pasquinian" context="CommonMonitor_J0TTSISR">
+		<validCheckSum>any</validCheckSum>
+		<createTable tablespace="${tablesTablespaceName}" tableName="J0TTSISR">
+			<column name="THREADINDEX" type="int"/>
+			<column name="RUNINDEX" type="int"/>
+			<column name="DOMAIN" type="varchar(100 BYTE)">
+				<constraints nullable="false"/>
+			</column>
+			<column name="ORGANIZATION" type="varchar(100 BYTE)">
+				<constraints nullable="false"/>
+			</column>
+			<column name="TIMESTAMP_STA" type="timestamp(6)">
+				<constraints nullable="false"/>
+			</column>
+			<column name="TIMESTAMP_END" type="timestamp(6)">
+				<constraints nullable="false"/>
+			</column>
+			<column name="TIMESTAMP_L_M" type="timestamp(6)">
+				<constraints nullable="false"/>
+			</column>
+			<column name="TIMESTAMP_MIN" type="timestamp(6)"/>
+			<column name="TIMESTAMP_MAX" type="timestamp(6)"/>
+			<column name="PROCESSED" type="boolean"/>
+		</createTable>
+		<createIndex tablespace="${tablesTablespaceName}" indexName="J0TTSISR_PK" tableName="J0TTSISR" unique="true">
+			<column name="THREADINDEX"/>
+			<column name="RUNINDEX"/>
+			<column name="TIMESTAMP_STA"/>
+			<column name="TIMESTAMP_END"/>
+		</createIndex> 
+	</changeSet>
+	<changeSet id="create-10" author="pasquinian" context="CommonMonitor_J0TTSOUS">
+		<createTable tablespace="${tablesTablespaceName}" tableName="J0TTSOUS">
+			<column name="DOMAIN" type="varchar(100 BYTE)">
+				<constraints nullable="false"/>
+			</column>
+			<column name="ORGANIZATION" type="varchar(100 BYTE)">
+				<constraints nullable="false"/>
+			</column>
+			<column name="GRIT_SIZE" type="varchar(10 BYTE)">
+				<constraints nullable="false"/>
+			</column>
+			<column name="TIMESTAMP_STA" type="timestamp(6)">
+				<constraints nullable="false"/>
+			</column>
+			<column name="TIMESTAMP_END" type="timestamp(6)">
+				<constraints nullable="false"/>
+			</column>
+			<column name="TIMESTAMP_L_M" type="timestamp(6)">
+				<constraints nullable="false"/>
+			</column>
+			<column name="COMPLETEDOK" type="varchar(4000 BYTE)"/>
+			<column name="COMPLETEDKO" type="varchar(4000 BYTE)"/>
+			<column name="SUSPENDED" type="varchar(4000 BYTE)"/>
+			<column name="SUSPENDEDFORERROR" type="varchar(4000 BYTE)"/>
+			<column name="NOTCOMPLETED" type="varchar(4000 BYTE)"/>
+			<column name="TOBEREVIEWED" type="varchar(4000 BYTE)"/>
+		</createTable>
+		<createIndex tablespace="${tablesTablespaceName}" indexName="J0TTSOUS_PK" tableName="J0TTSOUS" unique="true">
+			<column name="DOMAIN"/>
+			<column name="ORGANIZATION"/>
+			<column name="GRIT_SIZE"/>
+			<column name="TIMESTAMP_STA"/>
+			<column name="TIMESTAMP_END"/>
+		</createIndex> 
+	</changeSet>
+	<changeSet id="create-11" author="pasquinian" context="CommonMonitor_J0TTSOUT">
+		<createTable tablespace="${tablesTablespaceName}" tableName="J0TTSOUT">
+			<column name="DOMAIN" type="varchar(30 BYTE)">
+				<constraints nullable="false"/>
+			</column>
+			<column name="ORGANIZATION" type="varchar(30 BYTE)">
+				<constraints nullable="false"/>
+			</column>
+			<column name="GRIT_SIZE" type="varchar(10 BYTE)">
+				<constraints nullable="false"/>
+			</column>
+			<column name="TIMESTAMP_STA" type="timestamp(6)">
+				<constraints nullable="false"/>
+			</column>
+			<column name="TIMESTAMP_END" type="timestamp(6)">
+				<constraints nullable="false"/>
+			</column>
+			<column name="TIMESTAMP_L_M" type="timestamp(6)">
+				<constraints nullable="false"/>
+			</column>
+			<column name="SUMSASSTRING" type="varchar(4000 BYTE)"/>
+			<column name="MAXDURATIONS" type="varchar(4000 BYTE)"/>
+			<column name="MINDURATIONS" type="varchar(4000 BYTE)"/>
+		</createTable>
+		<createIndex tablespace="${tablesTablespaceName}" indexName="J0TTSOUT_PK" tableName="J0TTSOUT" unique="true">
+			<column name="DOMAIN"/>
+			<column name="ORGANIZATION"/>
+			<column name="GRIT_SIZE"/>
+			<column name="TIMESTAMP_STA"/>
+			<column name="TIMESTAMP_END"/>
+		</createIndex>
+	</changeSet>
+	<changeSet id="create-12" author="pasquinian" context="CommonMonitor_J0TTSRTS">
+		<createTable tablespace="${tablesTablespaceName}" tableName="J0TTSRTS">
+			<column name="DOMAIN" type="varchar(100 BYTE)">
+				<constraints nullable="false"/>
+			</column>
+			<column name="ORGANIZATION" type="varchar(100 BYTE)">
+				<constraints nullable="false"/>
+			</column>
+			<column name="GRIT_SIZE" type="varchar(10 BYTE)">
+				<constraints nullable="false"/>
+			</column>
+			<column name="TIMESTAMP_STA" type="timestamp(6)">
+				<constraints nullable="false"/>
+			</column>
+			<column name="TIMESTAMP_END" type="timestamp(6)">
+				<constraints nullable="false"/>
+			</column>
+			<column name="TIMESTAMP_L_M" type="timestamp(6)">
+				<constraints nullable="false"/>
+			</column>
+			<column name="COMPLETEDOK" type="varchar(4000 BYTE)"/>
+			<column name="COMPLETEDKO" type="varchar(4000 BYTE)"/>
+			<column name="SUSPENDED" type="varchar(4000 BYTE)"/>
+			<column name="SUSPENDEDFORERROR" type="varchar(4000 BYTE)"/>
+			<column name="NOTCOMPLETED" type="varchar(4000 BYTE)"/>
+			<column name="TOBEREVIEWED" type="varchar(4000 BYTE)"/>
+			<column name="WARNING" type="varchar(4000 BYTE)"/>
+		</createTable>
+		<createIndex tablespace="${tablesTablespaceName}" indexName="J0TTSRTS_PK" tableName="J0TTSRTS" unique="true">
+			<column name="DOMAIN"/>
+			<column name="ORGANIZATION"/>
+			<column name="GRIT_SIZE"/>
+			<column name="TIMESTAMP_STA"/>
+			<column name="TIMESTAMP_END"/>
+		</createIndex> 
+	</changeSet>
+	<changeSet id="create-13" author="pasquinian" context="CommonMonitor_J0TTSSTA">
+		<createTable tablespace="${tablesTablespaceName}" tableName="J0TTSSTA">
+			<column name="DOMAIN" type="varchar(100 BYTE)">
+				<constraints nullable="false"/>
+			</column>
+			<column name="ORGANIZATION" type="varchar(100 BYTE)">
+				<constraints nullable="false"/>
+			</column>
+			<column name="GRIT_SIZE" type="varchar(10 BYTE)">
+				<constraints nullable="false"/>
+			</column>
+			<column name="TIMESTAMP_STA" type="timestamp(6)">
+				<constraints nullable="false"/>
+			</column>
+			<column name="TIMESTAMP_END" type="timestamp(6)">
+				<constraints nullable="false"/>
+			</column>
+			<column name="TIMESTAMP_L_M" type="timestamp(6)">
+				<constraints nullable="false"/>
+			</column>
+			<column name="COMPLETEDOK" type="int"/>
+			<column name="COMPLETEDKO" type="int"/>
+			<column name="SUSPENDED" type="int"/>
+			<column name="SUSPENDEDFORERROR" type="int"/>
+			<column name="NOTCOMPLETED" type="int"/>
+			<column name="TOBEREVIEWED" type="int"/>
+			<column name="COMPLETEDOKMIN" type="number(19, 0)"/>
+			<column name="COMPLETEDKOMIN" type="number(19, 0)"/>
+			<column name="SUSPENDEDMIN" type="number(19, 0)"/>
+			<column name="SUSPENDEDFORERRORMIN" type="number(19, 0)"/>
+			<column name="NOTCOMPLETEDMIN" type="number(19, 0)"/>
+			<column name="TOBEREVIEWEDMIN" type="number(19, 0)"/>
+			<column name="COMPLETEDOKMAX" type="number(19, 0)"/>
+			<column name="COMPLETEDKOMAX" type="number(19, 0)"/>
+			<column name="SUSPENDEDMAX" type="number(19, 0)"/>
+			<column name="SUSPENDEDFORERRORMAX" type="number(19, 0)"/>
+			<column name="NOTCOMPLETEDMAX" type="number(19, 0)"/>
+			<column name="TOBEREVIEWEDMAX" type="number(19, 0)"/>
+		</createTable>
+		<createIndex tablespace="${tablesTablespaceName}" indexName="J0TTSSTA_PK" tableName="J0TTSSTA" unique="true">
+			<column name="DOMAIN"/>
+			<column name="ORGANIZATION"/>
+			<column name="GRIT_SIZE"/>
+			<column name="TIMESTAMP_STA"/>
+			<column name="TIMESTAMP_END"/>
+		</createIndex>
+	</changeSet>
+	<changeSet id="create-14" author="pasquinian">
+		<validCheckSum>any</validCheckSum>
+		<createTable tablespace="${tablesTablespaceName}" tableName="J0TXEVEN">
+			<column name="ID" type="number(18, 0)"/>
+			<column name="CLONEDFROM" type="number(18, 0)"/>
+			<column name="CORRELATIONID" type="varchar(100 BYTE)">
+				<constraints nullable="false"/>
+			</column>
+			<column name="DOMAIN" type="varchar(100 BYTE)">
+				<constraints nullable="false"/>
+			</column>
+			<column name="ORGANIZATION" type="varchar(100 BYTE)">
+				<constraints nullable="false"/>
+			</column>
+			<column name="TIMESTAMP" type="timestamp(6)">
+				<constraints nullable="false"/>
+			</column>
+			<column defaultValueComputed="CURRENT_TIMESTAMP" name="TIMESTAMP_INS" type="timestamp(6)">
+				<constraints nullable="false"/>
+			</column>
+			<column name="TYPE" type="varchar(30 BYTE)"/>
+			<column name="INFO" type="varchar(250 BYTE)"/>
+			<column name="COUNTERPART_C_K" type="varchar(100 BYTE)"/>
+			<column name="REQUESTTYPE" type="varchar(100 BYTE)"/>
+			<column name="REMOTEADDRESS" type="varchar(100 BYTE)"/>
+			<column name="REMOTEADDRESSTYPE" type="varchar(1 BYTE)"/>
+			<column name="LOCALADDRESS" type="varchar(100 BYTE)"/>
+			<column name="LOCALADDRESSTYPE" type="varchar(1 BYTE)"/>
+			<column name="APPL_REFE" type="varchar(100 BYTE)"/>
+			<column name="USER_PARA_1" type="varchar(100 BYTE)"/>
+			<column name="USER_PARA_2" type="varchar(100 BYTE)"/>
+			<column name="NETWORK_MSG_ID" type="varchar(100 BYTE)"/>
+			<column name="SERVICEID" type="varchar(50 BYTE)"/>
+			<column name="CONF_REF" type="varchar(50 BYTE)"/>
+			<column name="MODULENAME" type="varchar(30 BYTE)"/>
+			<column name="ERROR_CODES" type="varchar(500 BYTE)"/>
+			<column name="ERROR_DESCRS" type="varchar(4000 BYTE)"/>
+			<column name="COMMANDTYPE" type="varchar(50 BYTE)"/>
+			<column name="ISCOMPRESSED" type="boolean"/>
+			<column name="POSSIBLE_DUP" type="boolean"/>
+			<column name="INDX_STAT" type="varchar(1 BYTE)"/>
+			<column name="RESOURCEID" type="varchar(1024 BYTE)"/>
+			<column name="RESOURCETYPE" type="varchar(2 BYTE)"/>
+			<column name="CORR_KEY" type="varchar(512 BYTE)"/>
+			<column name="MESSAGEID" type="varchar(100 BYTE)"/>
+			<column name="TIMESTAMP_RES" type="timestamp(6)"/>
+			<column name="BUFF_STRI" type="${blob_type}"/>
+			<column name="EXTERNAL_BUFFER_REF" type="varchar(1024 BYTE)"/>
+			<column name="ENCODING" type="varchar(20 BYTE)"/>
+			<column name="BUFFER_SIZE" type="number(19, 0)"/>
+			<column name="LOGICAL_NAME" type="varchar(100 BYTE)"/>
+			<column name="ADDITIONAL_INFO" type="varchar(4000 BYTE)"/>
+			<column name="LANGUAGEURI" type="varchar(256 BYTE)"/>
+			<column defaultValueNumeric="0" name="PAYLOAD_OFFSET" type="number(18, 0)"/>
+			<column name="AUTHENTICITY_TOKEN" type="varchar(1024 BYTE)"/>
+			<column name="SERVER_NAME" type="varchar(512 BYTE)"/>
+			<column name="PATH" type="varchar(512 BYTE)"/>
+		</createTable>
+		<createIndex tablespace="${tablesTablespaceName}" indexName="J0TXEVEN_IDX1" tableName="J0TXEVEN">
+			<column defaultValueComputed="CURRENT_TIMESTAMP" name="TIMESTAMP_INS"/>
+		</createIndex> 
+		<createIndex tablespace="${tablesTablespaceName}" indexName="J0TXEVEN_IDX2" tableName="J0TXEVEN">
+			<column name="DOMAIN"/>
+			<column name="ORGANIZATION"/>
+			<column name="TIMESTAMP"/>
+			<column name="CORRELATIONID"/>
+		</createIndex> 
+		<createIndex tablespace="${tablesTablespaceName}" indexName="J0TXEVEN_IDX3" tableName="J0TXEVEN">
+			<column name="CORRELATIONID"/>
+		</createIndex> 
+		<createIndex tablespace="${tablesTablespaceName}" indexName="J0TXEVEN_PK" tableName="J0TXEVEN" unique="true">
+			<column name="ID"/>
+		</createIndex> 
+		<createSequence sequenceName="J0TXEVEN_ID_SEQ" startValue="1" incrementBy="1"/>
+	</changeSet>
+	<changeSet id="create-15" author="pasquinian" >
+		<createTable tablespace="${tablesTablespaceName}" tableName="J0TXINFO">
+			<column name="ID" type="number(18, 0)"/>
+			<column defaultValueComputed="CURRENT_TIMESTAMP" name="TMSTLOWERBOUND" type="timestamp(6)">
+				<constraints nullable="false"/>
+			</column>
+			<column name="DOMAIN" type="varchar(100 BYTE)"/>
+			<column name="ORGANIZATION" type="varchar(100 BYTE)"/>
+			<column name="USER_CODE" type="varchar(30 BYTE)"/>
+			<column name="LASTMODIFIED" type="timestamp(6)">
+				<constraints nullable="false"/>
+			</column>
+			<column name="RUNINDEX" type="int"/>
+			<column name="NUM_THREADS" type="int"/>
+		</createTable>
+		<createIndex tablespace="${tablesTablespaceName}" indexName="J0TXINFO_PK" tableName="J0TXINFO" unique="true">
+			<column name="ID"/>
+		</createIndex>
+	</changeSet>
+	<changeSet id="create-16" author="pasquinian" context="CommonMonitor_J0TREQUEST_TYPE">
+		<createTable tablespace="${tablesTablespaceName}" tableName="J0TREQUEST_TYPE">
+			<column name="ID" type="number(18, 0)"/>
+			<column name="NAME" type="varchar(100 BYTE)"/>
+			<column defaultValueComputed="CURRENT_TIMESTAMP" name="TIMESTAMP_INS" type="timestamp(6)">
+				<constraints nullable="false"/>
+			</column>
+		</createTable>
+		<createIndex tablespace="${tablesTablespaceName}" indexName="J0TREQUEST_TYPE_PK" tableName="J0TREQUEST_TYPE" unique="true">
+			<column name="ID"/>
+		</createIndex>
+	</changeSet>
+	<changeSet id="create-17" author="pasquinian" context="CommonMonitor_J0TTSS1S">
+		<createTable tablespace="${tablesTablespaceName}" tableName="J0TTSS1S">
+			<column name="DOMAIN" type="varchar(100 BYTE)">
+				<constraints nullable="false"/>
+			</column>
+			<column name="ORGANIZATION" type="varchar(100 BYTE)">
+				<constraints nullable="false"/>
+			</column>
+			<column name="GRIT_SIZE" type="varchar(10 BYTE)">
+				<constraints nullable="false"/>
+			</column>
+			<column name="TIMESTAMP_STA" type="timestamp(6)">
+				<constraints nullable="false"/>
+			</column>
+			<column name="TIMESTAMP_END" type="timestamp(6)">
+				<constraints nullable="false"/>
+			</column>
+			<column name="TIMESTAMP_L_M" type="timestamp(6)">
+				<constraints nullable="false"/>
+			</column>
+			<column name="COMPLETEDOK" type="varchar(4000 BYTE)"/>
+			<column name="COMPLETEDKO" type="varchar(4000 BYTE)"/>
+			<column name="SUSPENDED" type="varchar(4000 BYTE)"/>
+			<column name="SUSPENDEDFORERROR" type="varchar(4000 BYTE)"/>
+			<column name="NOTCOMPLETED" type="varchar(4000 BYTE)"/>
+			<column name="TOBEREVIEWED" type="varchar(4000 BYTE)"/>
+			<column name="WARNING" type="varchar(4000 BYTE)"/>
+		</createTable>
+		<createIndex tablespace="${tablesTablespaceName}" indexName="J0TTSS1S_PK" tableName="J0TTSS1S" unique="true">
+			<column name="DOMAIN"/>
+			<column name="ORGANIZATION"/>
+			<column name="GRIT_SIZE"/>
+			<column name="TIMESTAMP_STA"/>
+			<column name="TIMESTAMP_END"/>
+		</createIndex>
+	</changeSet>
+	<changeSet id="create-18" author="pasquinian" context="CommonMonitor_J0TTSS2S">
+		<createTable tablespace="${tablesTablespaceName}" tableName="J0TTSS2S">
+			<column name="DOMAIN" type="varchar(100 BYTE)">
+				<constraints nullable="false"/>
+			</column>
+			<column name="ORGANIZATION" type="varchar(100 BYTE)">
+				<constraints nullable="false"/>
+			</column>
+			<column name="GRIT_SIZE" type="varchar(10 BYTE)">
+				<constraints nullable="false"/>
+			</column>
+			<column name="TIMESTAMP_STA" type="timestamp(6)">
+				<constraints nullable="false"/>
+			</column>
+			<column name="TIMESTAMP_END" type="timestamp(6)">
+				<constraints nullable="false"/>
+			</column>
+			<column name="TIMESTAMP_L_M" type="timestamp(6)">
+				<constraints nullable="false"/>
+			</column>
+			<column name="COMPLETEDOK" type="varchar(4000 BYTE)"/>
+			<column name="COMPLETEDKO" type="varchar(4000 BYTE)"/>
+			<column name="SUSPENDED" type="varchar(4000 BYTE)"/>
+			<column name="SUSPENDEDFORERROR" type="varchar(4000 BYTE)"/>
+			<column name="NOTCOMPLETED" type="varchar(4000 BYTE)"/>
+			<column name="TOBEREVIEWED" type="varchar(4000 BYTE)"/>
+			<column name="WARNING" type="varchar(4000 BYTE)"/>
+		</createTable>
+		<createIndex tablespace="${tablesTablespaceName}" indexName="J0TTSS2S_PK" tableName="J0TTSS2S" unique="true">
+			<column name="DOMAIN"/>
+			<column name="ORGANIZATION"/>
+			<column name="GRIT_SIZE"/>
+			<column name="TIMESTAMP_STA"/>
+			<column name="TIMESTAMP_END"/>
+		</createIndex>
+	</changeSet>
+	<changeSet id="create-19" author="pasquinian" context="CommonMonitor_J0TTTRSZ">
+		<createTable tablespace="${tablesTablespaceName}" tableName="J0TTTRSZ">
+			<column name="DATA" type="date">
+				<constraints nullable="false"/>
+			</column>
+			<column name="TRANSPORT_TYPE" type="varchar(3 BYTE)">
+				<constraints nullable="false"/>
+			</column>
+			<column name="DIRECTION" type="varchar(7 BYTE)">
+				<constraints nullable="false"/>
+			</column>
+			<column name="APPLICATION" type="varchar(5 BYTE)">
+				<constraints nullable="false"/>
+			</column>
+			<column name="MSG_TYPE" type="varchar(4 BYTE)">
+				<constraints nullable="false"/>
+			</column>
+			<column name="MSG_NUMBER" type="number(9, 0)">
+				<constraints nullable="false"/>
+			</column>
+			<column name="MSG_SIZE" type="number(16, 0)">
+				<constraints nullable="false"/>
+			</column>
+			<column name="FILE_NAME" type="varchar(256 BYTE)">
+				<constraints nullable="false"/>
+			</column>
+			<column name="ALERT_FLAG" type="varchar(10 BYTE)"/>
+			<column defaultValueComputed="CURRENT_TIMESTAMP" name="TIMESTAMP_L_M" type="timestamp(6)"/>
+		</createTable>
+		<createIndex tablespace="${tablesTablespaceName}" indexName="J0TTTRSZ_IDX1" tableName="J0TTTRSZ" unique="true">
+			<column name="DATA"/>
+			<column name="TRANSPORT_TYPE"/>
+			<column name="DIRECTION"/>
+			<column name="APPLICATION"/>
+			<column name="MSG_TYPE"/>
+			<column name="FILE_NAME"/>
+		</createIndex>
+	</changeSet>
+
+	<changeSet id="create-20" author="pasquinian"  dbms="oracle">
+		<createSequence ordered="true" sequenceName="J0TTOPIC_ID_SEQ" startValue="1" incrementBy="1"/>
+	</changeSet>
+	<changeSet id="create-21" author="pasquinian"  dbms="!oracle">
+		<createSequence sequenceName="J0TTOPIC_ID_SEQ" startValue="1" incrementBy="1"/>
+	</changeSet>
+
+</databaseChangeLog>

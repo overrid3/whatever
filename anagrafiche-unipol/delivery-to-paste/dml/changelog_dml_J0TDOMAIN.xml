@@ -10,10 +10,10 @@
             <column name="FIRST" value="JC"/>
             <column name="SECOND" value="ANAG"/>
             <column name="THIRD" value="S"/>
-            <column name="IS_INDEXED" value="1"/>
-            <column name="IS_BACKOUT" value="0"/>
-            <column name="IS_TOPIC" value="0"/>
-            <column name="IS_IMPLICIT" value="1"/>
+            <column name="IS_INDEXED" valueBoolean="true"/>
+            <column name="IS_BACKOUT" valueBoolean="false"/>
+            <column name="IS_TOPIC" valueBoolean="false"/>
+            <column name="IS_IMPLICIT" valueBoolean="true"/>
         </insert>
 		<insert tableName="J0TDOMAIN">
             <column name="NAME" value="Acquisizione File Anagrafiche"/>
@@ -21,10 +21,10 @@
             <column name="FIRST" value="JC"/>
             <column name="SECOND" value="ANAG"/>
             <column name="THIRD" value="R"/>
-            <column name="IS_INDEXED" value="1"/>
-            <column name="IS_BACKOUT" value="0"/>
-            <column name="IS_TOPIC" value="0"/>
-            <column name="IS_IMPLICIT" value="1"/>
+            <column name="IS_INDEXED" valueBoolean="true"/>
+            <column name="IS_BACKOUT" valueBoolean="false"/>
+            <column name="IS_TOPIC" valueBoolean="false"/>
+            <column name="IS_IMPLICIT" valueBoolean="true"/>
         </insert>
 		<insert tableName="J0TDOMAIN">
             <column name="NAME" value="Backout"/>
@@ -32,10 +32,10 @@
             <column name="FIRST" value="JC"/>
             <column name="SECOND" value="BACKOUT"/>
             <column name="THIRD" value="S"/>
-            <column name="IS_INDEXED" value="1"/>
-            <column name="IS_BACKOUT" value="1"/>
-            <column name="IS_TOPIC" value="0"/>
-            <column name="IS_IMPLICIT" value="0"/>
+            <column name="IS_INDEXED" valueBoolean="true"/>
+            <column name="IS_BACKOUT" valueBoolean="true"/>
+            <column name="IS_TOPIC" valueBoolean="false"/>
+            <column name="IS_IMPLICIT" valueBoolean="false"/>
         </insert>
         <insert tableName="J0TDOMAIN">
             <column name="NAME" value="Notifiche"/>
@@ -43,10 +43,10 @@
             <column name="FIRST" value="JC"/>
             <column name="SECOND" value="NOTIF"/>
             <column name="THIRD" value="S"/>
-            <column name="IS_INDEXED" value="1"/>
-            <column name="IS_BACKOUT" value="0"/>
-            <column name="IS_TOPIC" value="0"/>
-            <column name="IS_IMPLICIT" value="0"/>
+            <column name="IS_INDEXED" valueBoolean="true"/>
+            <column name="IS_BACKOUT" valueBoolean="false"/>
+            <column name="IS_TOPIC" valueBoolean="false"/>
+            <column name="IS_IMPLICIT" valueBoolean="false"/>
         </insert>
     </changeSet>
 </databaseChangeLog>

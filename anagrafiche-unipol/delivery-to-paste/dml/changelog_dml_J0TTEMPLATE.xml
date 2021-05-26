@@ -11,9 +11,9 @@
             <column name="LANGUAGE_URI" value="http://lang.whole.org/Commons"/>
             <column name="DOMAIN" value="JC-ANAG-S"/>
             <column name="CONTEXT" value="ALL_IN_ONE"/>
-            <column name="ENTITY" valueClobFile="./J0TTEMPLATE_defaultMetadata.xml"/>
+            <column name="ENTITY" valueBlobFile="./J0TTEMPLATE_defaultMetadata.xml"/>
             <column name="INSERT_USER" value="ADMINISTRATOR"/>
-            <column name="ISDEFAULT" valueNumeric="1"/>
+            <column name="ISDEFAULT" valueBoolean="true"/>
         </insert>
     </changeSet>
 

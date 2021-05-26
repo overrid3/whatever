@@ -11,7 +11,7 @@
             <column name="THIRD" value="null"/>
             <column name="FOURTH" value="null"/>
             <column name="FIFTH" value="null"/>
-            <column name="ISDEFAULT" valueNumeric="0"/>
+            <column name="ISDEFAULT" valueBoolean="false"/>
         </insert>
         <insert tableName="J0TORGANIZATION">
             <column name="PATH" value="00000000-DEFAU"/>
@@ -20,7 +20,7 @@
             <column name="THIRD" value="null"/>
             <column name="FOURTH" value="null"/>
             <column name="FIFTH" value="null"/>
-            <column name="ISDEFAULT" valueNumeric="1"/>
+            <column name="ISDEFAULT" valueBoolean="true"/>
         </insert>
         <insert tableName="J0TORGANIZATION">
             <column name="PATH" value="00000000-DEFAU1"/>
@@ -29,7 +29,7 @@
             <column name="THIRD" value="null"/>
             <column name="FOURTH" value="null"/>
             <column name="FIFTH" value="null"/>
-            <column name="ISDEFAULT" valueNumeric="0"/>
+            <column name="ISDEFAULT" valueBoolean="false"/>
         </insert>
         <insert tableName="J0TORGANIZATION">
             <column name="PATH" value="00000000-DEFAU2"/>
@@ -38,7 +38,7 @@
             <column name="THIRD" value="null"/>
             <column name="FOURTH" value="null"/>
             <column name="FIFTH" value="null"/>
-            <column name="ISDEFAULT" valueNumeric="0"/>
+            <column name="ISDEFAULT" valueBoolean="false"/>
         </insert>
     </changeSet>
 </databaseChangeLog>
