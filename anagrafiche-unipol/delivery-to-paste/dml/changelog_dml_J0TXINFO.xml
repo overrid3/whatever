@@ -5,71 +5,91 @@
 
     <changeSet author="bulgarellic" id="populate-J0TXINFO">
 		<insert tableName="J0TXINFO">
-            <column name="ID" value="1"/>
-            <column name="DOMAIN" value="JC-BACKOUT-S"/>
-            <column name="USER_CODE" value="Engine"/>
-            <column name="LASTMODIFIED" valueDate="${now}"/>
-            <column name="RUNINDEX" valueNumeric="0"/>
-        </insert>
-		<insert tableName="J0TXINFO">
-            <column name="ID" value="2"/>
-            <column name="DOMAIN" value="JC-FIN-S"/>
-            <column name="USER_CODE" value="Engine"/>
-            <column name="LASTMODIFIED" valueDate="${now}"/>
-            <column name="RUNINDEX" valueNumeric="0"/>
-        </insert>
-		<insert tableName="J0TXINFO">
             <column name="ID" value="3"/>
-            <column name="DOMAIN" value="JC-FIN-R"/>
+            <column name="TMSTLOWERBOUND" valueDate="${now}"/>
+            <column name="DOMAIN" value="JC-BACKOUT-S"/>
+            <column name="ORGANIZATION" value="NULL"/>
             <column name="USER_CODE" value="Engine"/>
             <column name="LASTMODIFIED" valueDate="${now}"/>
             <column name="RUNINDEX" valueNumeric="0"/>
         </insert>
 		<insert tableName="J0TXINFO">
             <column name="ID" value="4"/>
-            <column name="DOMAIN" value="JC-FIN-S"/>
-            <column name="USER_CODE" value="Implicit"/>
+            <column name="TMSTLOWERBOUND" valueDate="${now}"/>
+            <column name="DOMAIN" value="JC-ANAG-S"/>
+            <column name="ORGANIZATION" value="NULL"/>
+            <column name="USER_CODE" value="Engine"/>
             <column name="LASTMODIFIED" valueDate="${now}"/>
             <column name="RUNINDEX" valueNumeric="0"/>
         </insert>
 		<insert tableName="J0TXINFO">
             <column name="ID" value="5"/>
-            <column name="TMSTLOWERBOUND" valueDate="2000-01-01" />
-            <column name="USER_CODE" value="RequestTypeStatus"/>
+            <column name="TMSTLOWERBOUND" valueDate="${now}"/>
+            <column name="DOMAIN" value="JC-ANAG-R"/>
+            <column name="ORGANIZATION" value="NULL"/>
+            <column name="USER_CODE" value="Engine"/>
             <column name="LASTMODIFIED" valueDate="${now}"/>
             <column name="RUNINDEX" valueNumeric="0"/>
         </insert>
 		<insert tableName="J0TXINFO">
             <column name="ID" value="6"/>
-            <column name="TMSTLOWERBOUND" valueDate="2000-01-01" />
-            <column name="USER_CODE" value="InputChannelStatus"/>
+            <column name="TMSTLOWERBOUND" valueDate="${now}"/>
+            <column name="DOMAIN" value="JC-NOTIF-S"/>
+            <column name="ORGANIZATION" value="NULL"/>
+            <column name="USER_CODE" value="Engine"/>
             <column name="LASTMODIFIED" valueDate="${now}"/>
             <column name="RUNINDEX" valueNumeric="0"/>
         </insert>
 		<insert tableName="J0TXINFO">
             <column name="ID" value="7"/>
-            <column name="TMSTLOWERBOUND" valueDate="2000-01-01" />
-            <column name="USER_CODE" value="OutputChannelStatus"/>
+            <column name="TMSTLOWERBOUND" date="${now}"/>
+            <column name="DOMAIN" value="NULL"/>
+            <column name="ORGANIZATION" value="NULL"/>
+            <column name="USER_CODE" value="RequestTypeStatus"/>
             <column name="LASTMODIFIED" valueDate="${now}"/>
             <column name="RUNINDEX" valueNumeric="0"/>
         </insert>
 		<insert tableName="J0TXINFO">
             <column name="ID" value="8"/>
-            <column name="TMSTLOWERBOUND" valueDate="2000-01-01" />
-            <column name="USER_CODE" value="RequestTypeStatusCoarse"/>
+            <column name="TMSTLOWERBOUND" date="${now}"/>
+            <column name="DOMAIN" value="NULL"/>
+            <column name="ORGANIZATION" value="NULL"/>
+            <column name="USER_CODE" value="InputChannelStatus"/>
             <column name="LASTMODIFIED" valueDate="${now}"/>
             <column name="RUNINDEX" valueNumeric="0"/>
         </insert>
 		<insert tableName="J0TXINFO">
             <column name="ID" value="9"/>
-            <column name="TMSTLOWERBOUND" valueDate="2000-01-01" />
-            <column name="USER_CODE" value="InputChannelStatusCoarse"/>
+            <column name="TMSTLOWERBOUND" date="${now}"/>
+            <column name="DOMAIN" value="NULL"/>
+            <column name="ORGANIZATION" value="NULL"/>
+            <column name="USER_CODE" value="OutputChannelStatus"/>
             <column name="LASTMODIFIED" valueDate="${now}"/>
             <column name="RUNINDEX" valueNumeric="0"/>
         </insert>
 		<insert tableName="J0TXINFO">
             <column name="ID" value="10"/>
-            <column name="TMSTLOWERBOUND" valueDate="2000-01-01" />
+            <column name="TMSTLOWERBOUND" date="${now}"/>
+            <column name="DOMAIN" value="NULL"/>
+            <column name="ORGANIZATION" value="NULL"/>
+            <column name="USER_CODE" value="RequestTypeStatusCoarse"/>
+            <column name="LASTMODIFIED" valueDate="${now}"/>
+            <column name="RUNINDEX" valueNumeric="0"/>
+        </insert>
+		<insert tableName="J0TXINFO">
+            <column name="ID" value="11"/>
+            <column name="TMSTLOWERBOUND" date="${now}"/>
+            <column name="DOMAIN" value="NULL"/>
+            <column name="ORGANIZATION" value="NULL"/>
+            <column name="USER_CODE" value="InputChannelStatusCoarse"/>
+            <column name="LASTMODIFIED" valueDate="${now}"/>
+            <column name="RUNINDEX" valueNumeric="0"/>
+        </insert>
+		<insert tableName="J0TXINFO">
+            <column name="ID" value="12"/>
+            <column name="TMSTLOWERBOUND" date="${now}"/>
+            <column name="DOMAIN" value="NULL"/>
+            <column name="ORGANIZATION" value="NULL"/>
             <column name="USER_CODE" value="OutputChannelStatusCoarse"/>
             <column name="LASTMODIFIED" valueDate="${now}"/>
             <column name="RUNINDEX" valueNumeric="0"/>

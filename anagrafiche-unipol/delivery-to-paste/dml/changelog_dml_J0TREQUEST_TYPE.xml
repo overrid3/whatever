@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.6.xsd">
+
+    <changeSet author="gasparoniv" id="populate-J0TREQUEST_TYPE">
+        <insert tableName="J0TREQUEST_TYPE">
+            <column name="ID" value="1"/>
+            <column name="NAME" value="TEXT/IMPORT/BICPLUS"/>
+        </insert>
+        <insert tableName="J0TREQUEST_TYPE">
+            <column name="ID" value="2"/>
+            <column name="NAME" value="TEXT/IMPORT/IBANPLUS"/>
+        </insert>
+        <insert tableName="J0TREQUEST_TYPE">
+            <column name="ID" value="3"/>
+            <column name="NAME" value="TEXT/IMPORT/BANKPLUS"/>
+        </insert>
+        <insert tableName="J0TREQUEST_TYPE">
+            <column name="ID" value="4"/>
+            <column name="NAME" value="TEXT/IMPORT/BICPLUS"/>
+        </insert>
+        <insert tableName="J0TREQUEST_TYPE">
+            <column name="ID" value="5"/>
+            <column name="NAME" value="TEXT/IMPORT/IBANPLUS"/>
+        </insert>
+        <insert tableName="J0TREQUEST_TYPE">
+            <column name="ID" value="6"/>
+            <column name="NAME" value="TEXT/IMPORT/BANKPLUS"/>
+        </insert>
+        <insert tableName="J0TREQUEST_TYPE">
+            <column name="ID" value="7"/>
+            <column name="NAME" value="TEXT/IMPORT/GPI"/>
+        </insert>
+        <insert tableName="J0TREQUEST_TYPE">
+            <column name="ID" value="8"/>
+            <column name="NAME" value="TEXT/IMPORT/GPI"/>
+        </insert>
+        <insert tableName="J0TREQUEST_TYPE">
+            <column name="ID" value="9"/>
+            <column name="NAME" value="TEXT/IMPORT/TIPS"/>
+        </insert>
+        <insert tableName="J0TREQUEST_TYPE">
+            <column name="ID" value="10"/>
+            <column name="NAME" value="TEXT/IMPORT/TIPS"/>
+        </insert>
+    </changeSet>
+</databaseChangeLog>
