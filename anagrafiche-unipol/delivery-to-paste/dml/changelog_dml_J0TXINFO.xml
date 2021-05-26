@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+	xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.6.xsd">
+
+    <changeSet author="bulgarellic" id="populate-J0TXINFO">
+		<insert tableName="J0TXINFO">
+            <column name="ID" value="1"/>
+            <column name="DOMAIN" value="JC-BACKOUT-S"/>
+            <column name="USER_CODE" value="Engine"/>
+            <column name="LASTMODIFIED" valueDate="${now}"/>
+            <column name="RUNINDEX" valueNumeric="0"/>
+        </insert>
+		<insert tableName="J0TXINFO">
+            <column name="ID" value="2"/>
+            <column name="DOMAIN" value="JC-FIN-S"/>
+            <column name="USER_CODE" value="Engine"/>
+            <column name="LASTMODIFIED" valueDate="${now}"/>
+            <column name="RUNINDEX" valueNumeric="0"/>
+        </insert>
+		<insert tableName="J0TXINFO">
+            <column name="ID" value="3"/>
+            <column name="DOMAIN" value="JC-FIN-R"/>
+            <column name="USER_CODE" value="Engine"/>
+            <column name="LASTMODIFIED" valueDate="${now}"/>
+            <column name="RUNINDEX" valueNumeric="0"/>
+        </insert>
+		<insert tableName="J0TXINFO">
+            <column name="ID" value="4"/>
+            <column name="DOMAIN" value="JC-FIN-S"/>
+            <column name="USER_CODE" value="Implicit"/>
+            <column name="LASTMODIFIED" valueDate="${now}"/>
+            <column name="RUNINDEX" valueNumeric="0"/>
+        </insert>
+		<insert tableName="J0TXINFO">
+            <column name="ID" value="5"/>
+            <column name="TMSTLOWERBOUND" valueDate="2000-01-01" />
+            <column name="USER_CODE" value="RequestTypeStatus"/>
+            <column name="LASTMODIFIED" valueDate="${now}"/>
+            <column name="RUNINDEX" valueNumeric="0"/>
+        </insert>
+		<insert tableName="J0TXINFO">
+            <column name="ID" value="6"/>
+            <column name="TMSTLOWERBOUND" valueDate="2000-01-01" />
+            <column name="USER_CODE" value="InputChannelStatus"/>
+            <column name="LASTMODIFIED" valueDate="${now}"/>
+            <column name="RUNINDEX" valueNumeric="0"/>
+        </insert>
+		<insert tableName="J0TXINFO">
+            <column name="ID" value="7"/>
+            <column name="TMSTLOWERBOUND" valueDate="2000-01-01" />
+            <column name="USER_CODE" value="OutputChannelStatus"/>
+            <column name="LASTMODIFIED" valueDate="${now}"/>
+            <column name="RUNINDEX" valueNumeric="0"/>
+        </insert>
+		<insert tableName="J0TXINFO">
+            <column name="ID" value="8"/>
+            <column name="TMSTLOWERBOUND" valueDate="2000-01-01" />
+            <column name="USER_CODE" value="RequestTypeStatusCoarse"/>
+            <column name="LASTMODIFIED" valueDate="${now}"/>
+            <column name="RUNINDEX" valueNumeric="0"/>
+        </insert>
+		<insert tableName="J0TXINFO">
+            <column name="ID" value="9"/>
+            <column name="TMSTLOWERBOUND" valueDate="2000-01-01" />
+            <column name="USER_CODE" value="InputChannelStatusCoarse"/>
+            <column name="LASTMODIFIED" valueDate="${now}"/>
+            <column name="RUNINDEX" valueNumeric="0"/>
+        </insert>
+		<insert tableName="J0TXINFO">
+            <column name="ID" value="10"/>
+            <column name="TMSTLOWERBOUND" valueDate="2000-01-01" />
+            <column name="USER_CODE" value="OutputChannelStatusCoarse"/>
+            <column name="LASTMODIFIED" valueDate="${now}"/>
+            <column name="RUNINDEX" valueNumeric="0"/>
+        </insert>
+    </changeSet>
+</databaseChangeLog>

@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<embeddedapptemplate:Template xmlns:embeddedapptemplate="whole:it.tasgroup:EmbeddedAppTemplate">
+    <embeddedapptemplate:Metadata>
+        <embeddedapptemplate:Service value="TEXT/PR/IMPORT/BICPLUS"/>
+        <embeddedapptemplate:RequestType value="TEXT/IMPORT/BICPLUS"/>
+        <embeddedapptemplate:Address>
+            <embeddedapptemplate:AddressType value="R"/>
+            <embeddedapptemplate:AddressValue value="00000"/>
+        </embeddedapptemplate:Address>
+        <embeddedapptemplate:Address>
+            <embeddedapptemplate:AddressType value="R"/>
+            <embeddedapptemplate:AddressValue value="00000"/>
+        </embeddedapptemplate:Address>
+        <embeddedapptemplate:CompressionType value="N"/>
+        <commons:Resolver xmlns:commons="http://lang.whole.org/Commons"/>
+        <commons:Resolver xmlns:commons="http://lang.whole.org/Commons"/>
+        <embeddedapptemplate:ConfigurationId value="2"/>
+        <commons:Resolver xmlns:commons="http://lang.whole.org/Commons"/>
+        <commons:Resolver xmlns:commons="http://lang.whole.org/Commons"/>
+        <embeddedapptemplate:CommandType value="SEND"/>
+        <embeddedapptemplate:Organization value="00000000-DEFAU"/>
+        <embeddedapptemplate:Domain value="JC-ANAG-R"/>
+        <commons:Resolver xmlns:commons="http://lang.whole.org/Commons"/>
+        <commons:Resolver xmlns:commons="http://lang.whole.org/Commons"/>
+        <commons:Resolver xmlns:commons="http://lang.whole.org/Commons"/>
+        <commons:Resolver xmlns:commons="http://lang.whole.org/Commons"/>
+        <commons:Resolver xmlns:commons="http://lang.whole.org/Commons"/>
+        <commons:Resolver xmlns:commons="http://lang.whole.org/Commons"/>
+        <commons:Resolver xmlns:commons="http://lang.whole.org/Commons"/>
+    </embeddedapptemplate:Metadata>
+    <commons:SameStageFragment xmlns:commons="http://lang.whole.org/Commons">
+        <commons:Resolver xmlns:commons="http://lang.whole.org/Commons"/>
+    </commons:SameStageFragment>
+</embeddedapptemplate:Template>

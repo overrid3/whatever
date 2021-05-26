@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.6.xsd">
+
+    <changeSet author="bulgarellic" id="populate-J0TDOMAIN">
+        <insert tableName="J0TDOMAIN">
+            <column name="NAME" value="Consegna File Anagrafiche"/>
+            <column name="PATH" value="JC-ANAG-S"/>
+            <column name="FIRST" value="JC"/>
+            <column name="SECOND" value="ANAG"/>
+            <column name="THIRD" value="S"/>
+            <column name="IS_INDEXED" value="1"/>
+            <column name="IS_BACKOUT" value="0"/>
+            <column name="IS_TOPIC" value="0"/>
+            <column name="IS_IMPLICIT" value="1"/>
+        </insert>
+		<insert tableName="J0TDOMAIN">
+            <column name="NAME" value="Acquisizione File Anagrafiche"/>
+            <column name="PATH" value="JC-ANAG-R"/>
+            <column name="FIRST" value="JC"/>
+            <column name="SECOND" value="ANAG"/>
+            <column name="THIRD" value="R"/>
+            <column name="IS_INDEXED" value="1"/>
+            <column name="IS_BACKOUT" value="0"/>
+            <column name="IS_TOPIC" value="0"/>
+            <column name="IS_IMPLICIT" value="1"/>
+        </insert>
+		<insert tableName="J0TDOMAIN">
+            <column name="NAME" value="Backout"/>
+            <column name="PATH" value="JC-BACKOUT-S"/>
+            <column name="FIRST" value="JC"/>
+            <column name="SECOND" value="BACKOUT"/>
+            <column name="THIRD" value="S"/>
+            <column name="IS_INDEXED" value="1"/>
+            <column name="IS_BACKOUT" value="1"/>
+            <column name="IS_TOPIC" value="0"/>
+            <column name="IS_IMPLICIT" value="0"/>
+        </insert>
+        <insert tableName="J0TDOMAIN">
+            <column name="NAME" value="Notifiche"/>
+            <column name="PATH" value="JC-NOTIF-S"/>
+            <column name="FIRST" value="JC"/>
+            <column name="SECOND" value="NOTIF"/>
+            <column name="THIRD" value="S"/>
+            <column name="IS_INDEXED" value="1"/>
+            <column name="IS_BACKOUT" value="0"/>
+            <column name="IS_TOPIC" value="0"/>
+            <column name="IS_IMPLICIT" value="0"/>
+        </insert>
+    </changeSet>
+</databaseChangeLog>

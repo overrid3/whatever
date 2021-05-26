@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+	xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.6.xsd">
+
+	<changeSet author="bulgarellic" id="populate-ROLE">
+		<insert tableName="ROLE">
+            <column name="ID" value="1"/>
+            <column name="NAME" value="ADMINISTRATOR"/>
+            <column name="ROLE_VALUE" value='{"type":"R","@id":1,"id":1,"role":null,"descriptorClassName":null,"descriptorId":null,"context":null,"name":"ADMINISTRATOR","skills":[{"type":"A","@id":2,"id":null,"role":1,"descriptorClassName":"it.tasgroup.user.profiler.model.ActionIdUI","descriptorId":0,"context":null},{"type":"A","@id":3,"id":null,"role":1,"descriptorClassName":"it.tasgroup.user.profiler.model.ActionIdUI","descriptorId":2,"context":null},{"type":"A","@id":4,"id":null,"role":1,"descriptorClassName":"it.tasgroup.user.profiler.model.ActionIdUI","descriptorId":1,"context":null},{"type":"A","@id":5,"id":null,"role":1,"descriptorClassName":"it.tasgroup.user.profiler.model.ActionIdUI","descriptorId":3,"context":null},{"type":"A","@id":6,"id":null,"role":1,"descriptorClassName":"it.tasgroup.user.profiler.model.ActionIdUI","descriptorId":8,"context":null},{"type":"A","@id":7,"id":null,"role":1,"descriptorClassName":"it.tasgroup.user.profiler.model.ActionIdUI","descriptorId":9,"context":null}]}'/>
+            <column name="STATUS" value="STABLE"/>
+            <column name="VERSION_APPLICATION" valueNumeric="1"/>
+            <column name="LAST_USER_MODIFIER" value="ADMINISTRATOR"/>
+            <column name="VERSION_LOCK" valueNumeric="0"/>
+        </insert>
+		<insert tableName="ROLE">
+            <column name="ID" value="2"/>
+            <column name="NAME" value="APPROVER"/>
+            <column name="ROLE_VALUE" value='{"type":"R","@id":1,"id":2,"role":null,"descriptorClassName":null,"descriptorId":null,"context":null,"name":"APPROVER","skills":[{"type":"A","@id":2,"id":null,"role":1,"descriptorClassName":"it.tasgroup.user.profiler.model.ActionIdUI","descriptorId":0,"context":null},{"type":"A","@id":3,"id":null,"role":1,"descriptorClassName":"it.tasgroup.user.profiler.model.ActionIdUI","descriptorId":2,"context":null},{"type":"A","@id":4,"id":null,"role":1,"descriptorClassName":"it.tasgroup.user.profiler.model.ActionIdUI","descriptorId":1,"context":null},{"type":"A","@id":5,"id":null,"role":1,"descriptorClassName":"it.tasgroup.user.profiler.model.ActionIdUI","descriptorId":3,"context":null},{"type":"A","@id":6,"id":null,"role":1,"descriptorClassName":"it.tasgroup.user.profiler.model.ActionIdUI","descriptorId":8,"context":null},{"type":"A","@id":7,"id":null,"role":1,"descriptorClassName":"it.tasgroup.user.profiler.model.ActionIdUI","descriptorId":9,"context":null}]}'/>
+            <column name="STATUS" value="STABLE"/>
+            <column name="VERSION_APPLICATION" valueNumeric="1"/>
+            <column name="LAST_USER_MODIFIER" value="APPROVER"/>
+            <column name="VERSION_LOCK" valueNumeric="0"/>
+        </insert>
+    </changeSet>
+</databaseChangeLog>

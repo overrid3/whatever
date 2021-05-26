@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+	xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.6.xsd">
+
+    <changeSet author="bulgarellic" id="populate-J0TTEMPLATE">
+		<insert tableName="J0TTEMPLATE">
+            <column name="ID" valueNumeric="0"/>
+            <column name="NAME" value="DefaultMetadata"/>
+            <column name="DESCRIPTION" value="Template con solo i metadata di default e il payload vuoto" />
+            <column name="LANGUAGE_URI" value="http://lang.whole.org/Commons"/>
+            <column name="DOMAIN" value="JC-ANAG-S"/>
+            <column name="CONTEXT" value="ALL_IN_ONE"/>
+            <column name="ENTITY" valueBlobFile="./J0TTEMPLATE_defaultMetadata.xml"/>
+            <column name="INSERT_USER" value="ADMINISTRATOR"/>
+            <column name="ISDEFAULT" valueNumeric="1"/>
+        </insert>
+    </changeSet>
+
+</databaseChangeLog>
