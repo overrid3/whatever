@@ -3,7 +3,7 @@
                    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
                    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.6.xsd">
 
-    <changeSet author="bulgarellic" id="populate-J0TDOMAIN">
+    <changeSet author="cozzil" id="populate-J0TDOMAIN">
         <insert tableName="J0TDOMAIN">
             <column name="NAME" value="Consegna File Anagrafiche"/>
             <column name="PATH" value="JC-ANAG-S"/>
