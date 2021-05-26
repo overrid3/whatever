@@ -10,6 +10,9 @@
     <include file="solution/dml/changelog_dml_ROLE.xml" relativeToChangelogFile="false"/>
     <include file="solution/dml/changelog_dml_J0TORGANIZATION.xml" relativeToChangelogFile="false"/>
     <include file="solution/dml/changelog_dml_J0TDOMAIN.xml" relativeToChangelogFile="false"/>
-<!--    <include file="solution/dml/changelog_dml_J0TTEMPLATE.xml" relativeToChangelogFile="false"/>-->
+    <include file="solution/dml/changelog_dml_J0TTEMPLATE.xml" relativeToChangelogFile="false"/>
     <include file="solution/dml/changelog_dml_J0TXINFO.xml" relativeToChangelogFile="false"/>
+
+    <include file="solution/dml/changelog_dml_J0TREQUEST_TYPE.xml" relativeToChangelogFile="false"/>
+    <include file="solution/dml/changelog_dml_YWTWIBAP.xml" relativeToChangelogFile="false"/>
 </databaseChangeLog>
