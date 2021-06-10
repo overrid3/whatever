@@ -1,0 +1,21 @@
+version: '3.3'
+services:
+  activemq5:
+    container_name: mq-ng-middleware-unipol
+    image: dkr-registry.tasgroup.it/supportwas/activemq5:5.15.14
+    ports:
+      - 8162:8161
+  jboss:
+    container_name: ng-middleware-unipol
+    build:
+      context: ./delivery
+      dockerfile: Dockerfile
+    image: gitlab.int.master.lan:5005/netgat/ng-middleware/wildfly-unipol
+    ports:
+      - 9990:9990
+      - 8787:8787
+      - 8080:8080
+    env_file:
+      - wildfly.env
+    command: /opt/jboss/wildfly/bin/standalone.sh -b 0.0.0.0 -bmanagement 0.0.0.0 --debug
+
