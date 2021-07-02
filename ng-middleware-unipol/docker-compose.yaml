@@ -1,21 +1,50 @@
 version: '3.3'
 services:
-  activemq5:
-    container_name: mq-ng-middleware-unipol
-    image: dkr-registry.tasgroup.it/supportwas/activemq5:5.15.14
-    ports:
-      - 8162:8161
-  jboss:
-    container_name: ng-middleware-unipol
+#  activemq5:
+#    container_name: mq-ng-middleware-unipol
+#    image: dkr-registry.tasgroup.it/supportwas/activemq5:5.15.14
+#    ports:
+#      - 8162:8161
+#  jboss:
+#    container_name: ng-middleware-unipol
+#    build:
+#      context: ./delivery
+#      dockerfile: Dockerfile
+#    image: gitlab.int.master.lan:5005/netgat/ng-middleware/wildfly-unipol
+#    ports:
+#      - 9990:9990
+#      - 8787:8787
+#      - 8080:8080
+#    env_file:
+#      - wildfly.env
+#    command: /opt/jboss/wildfly/bin/standalone.sh -b 0.0.0.0 -bmanagement 0.0.0.0 --debug
+  database:
+    container_name: ng-middleware-unipol-postgres
     build:
-      context: ./delivery
-      dockerfile: Dockerfile
-    image: gitlab.int.master.lan:5005/netgat/ng-middleware/wildfly-unipol
+      context: .
+      dockerfile: ./database/Dockerfile
+    image: local/ng-middleware/unipol-postgres
+    environment:
+      - POSTGRES_PASSWORD=postgres
     ports:
-      - 9990:9990
-      - 8787:8787
-      - 8080:8080
-    env_file:
-      - wildfly.env
-    command: /opt/jboss/wildfly/bin/standalone.sh -b 0.0.0.0 -bmanagement 0.0.0.0 --debug
-
+      - 5432:5432
+  liquibase:
+    container_name: ng-middleware-unipol-liquibase
+    build:
+      context: ./delivery/liquibase
+      dockerfile: postgres.Dockerfile
+    image: local/ng-middleware/unipol-liquibase
+    environment:
+      - CLASSPATH=/liquibase/changelog
+      - CONNECTION_STRING_OWNER=jdbc:postgresql://database:5432/DATABASE
+      - CHANGE_LOG_DDL_OWNER=master_changelog_owner.xml
+      - DB_OWNER_USERNAME=db_owner
+      - DB_OWNER_PASSWORD=db_owner
+      - CONNECTION_STRING_USER=jdbc:postgresql://database:5432/DATABASE
+      - CHANGE_LOG_DDL_USER=master_changelog_user.xml
+      - DB_USER_USERNAME=db_user
+      - DB_USER_PASSWORD=db_user
+      - DATA_TABLE_SPACE=pg_default
+      - INDEX_TABLE_SPACE=pg_default
+      - DB_OWNER=db_owner
+      - DB_USER=db_user
